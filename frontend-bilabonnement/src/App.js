@@ -1,21 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
-import CarList from "./components/carList";
-import SubscriptionList from "./components/subscriptionList";
-import CustomerList from "./components/customerList";
+import {BrowserRouter as Router, Link, Route, Routes} from 'react-router-dom';
+import CarList from "./components/lists/carList";
+import SubscriptionList from "./components/lists/subscriptionList";
+import CustomerList from "./components/lists/customerList";
 
 function App() {
   return (
-    <div className="App">
-        <p>
-          <CarList></CarList>
-            <SubscriptionList></SubscriptionList>
-            <CustomerList></CustomerList>
+      <Router>
+          <div className="App">
+              <Link to="/cars" className="navbar-link"> <button  > Show Cars </button> </Link>
+              <Routes>
+                  <Route path="/cars" element={<CarList />} />
+              </Routes>
+          </div>
+      </Router>
 
-            <div>Hello</div>
-        </p>
-    </div>
   );
 }
+
+/*<CarList></CarList>
+        <SubscriptionList></SubscriptionList>
+        <CustomerList></CustomerList>*/
 
 export default App;

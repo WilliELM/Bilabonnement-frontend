@@ -16,12 +16,16 @@ function CarList() {
 
     return (
         <div>
-            {cars.map(car => (
-                <div key={car.id}>
-                    {car.data}
-                    <p>{car.model} - {car.brand} - {car.price}</p>
-                </div>
-            ))}
+            <h1> Cars </h1>
+            <li className="image-container">
+                {cars.map(car => (
+                    <div key={car.id} className="car-card">
+                        {car.data}
+                        <p className="cars">{car.brand}: {car.model} - {car.price},- fueltype: {car.fueltype} - {car.nummerplade} </p>
+                    </div>
+                ))}
+            </li>
+
         </div>
     );
 }

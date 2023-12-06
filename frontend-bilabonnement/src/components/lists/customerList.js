@@ -16,11 +16,16 @@ function CustomerList() {
 
     return (
         <div>
-            {customers.map(customer => (
-                <div key={customer.id}>
-                    <p>Customer {customer.id} with name {customer.firstName} {customer.lastName}</p>
-                </div>
-            ))}
+            <h1> Customers </h1>
+            <li className="image-container">
+                {customers.map(customer => (
+                    <div key={customer.id} className="customer-card">
+                        <p className="customers">Customer {customer.id} with name {customer.firstName} {customer.lastName}</p>
+                    </div>
+                ))}
+
+            </li>
+
         </div>
     );
 }

@@ -11,3 +11,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+
+}
+
+.car-card {
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.customer-card {
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.subscription-card {
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+

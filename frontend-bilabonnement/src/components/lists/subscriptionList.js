@@ -16,11 +16,15 @@ function SubscriptionList() {
 
     return (
         <div>
-            {subscriptions.map(subscription => (
-                <div key={subscription.id}>
-                    <p>Sub {subscription.id} with date {subscription.buydate}</p>
-                </div>
-            ))}
+            <h1> Subscriptions </h1>
+            <li className="image-container">
+                {subscriptions.map(subscription => (
+                    <div key={subscription.id}>
+                        <p className="subscription-card">Sub {subscription.id} with date {subscription.buydate}</p>
+                    </div>
+                ))}
+            </li>
+
         </div>
     );
 }
