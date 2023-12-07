@@ -17,8 +17,14 @@ function CustomerList() {
     return (
         <div>
             {customers.map(customer => (
-                <div key={customer.id}>
-                    <p>Customer {customer.id} with name {customer.firstName} {customer.lastName}</p>
+                <div className="container" key={customer.id}>
+                    <h2>{`${customer.firstName} ${customer.lastName}`}</h2>
+                    <p>Address: {customer.address}</p>
+                    <p>Zip Code: {customer.zipcode}</p>
+                    <p>City: {customer.city}</p>
+                    <p>Phone: {customer.phone}</p>
+                    <p>Email: {customer.email}</p>
+                    <p>CPR: {customer.cpr}</p>
                 </div>
             ))}
         </div>

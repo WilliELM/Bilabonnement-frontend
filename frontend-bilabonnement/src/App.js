@@ -12,7 +12,7 @@ function App() {
                 <header className="App-header">
                     <Navbar />
                 </header>
-                <div className="content">ç
+                <div className="content">
                     <Routes>
                         <Route path="/cars" element={<CarList />} />
                         <Route path="/customers" element={<CustomerList />} />
