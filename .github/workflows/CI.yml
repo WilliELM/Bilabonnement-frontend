@@ -18,6 +18,9 @@ jobs:
           token: ${{ secrets.MY_TOKEN || github.token }}
           fetch-depth: 0
 
+      - name: Fetch latest changes from remote
+        run: git fetch --all
+
       - name: Get default branch name
         id: default_branch
         run: echo "::set-output name=branch::$(git remote show origin | awk '/HEAD branch/ {print $NF}')"
@@ -45,10 +48,10 @@ jobs:
         run: |
           set -ex
           TARGET_BRANCH=$(git remote show origin | awk '/HEAD branch/ {print $NF}')
-          git push origin HEAD:${TARGET_BRANCH}
+          git push --force-with-lease origin HEAD:${TARGET_BRANCH}
       
       - name: Delete issue branch
         if: startsWith(github.ref, 'refs/heads/issue/') && github.event_name == 'push'
         run: |
           set -ex
-          git push origin --delete "${GITHUB_REF#refs/heads/}"
+          git push origin --delete "${GITHUB_REF#refs/heads/}"*
