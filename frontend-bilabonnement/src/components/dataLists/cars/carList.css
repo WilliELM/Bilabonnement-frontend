@@ -1,25 +1,62 @@
-.carlist-container {
+.page-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column; /* Stack filters and cards vertically */
+    width: 100%;
 }
 
 .filters-container {
-    width: 20%; /* Adjust as needed */
+    display: flex; /* Align filter inputs horizontally */
+    justify-content: flex-start; /* Align to the start */
+    gap: 10px; /* Adds space between filter elements */
     padding: 20px;
-    border-right: 1px solid #ddd; /* Just for visual separation */
+    border-bottom: 1px solid #ddd; /* Line below the filter section */
 }
 
 .cars-container {
-    width: 75%; /* Adjust as needed */
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Creates a responsive grid */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adaptive grid */
     grid-gap: 20px;
     padding: 20px;
+    margin-top: 20px; /* Space below the filter section */
+    width: calc(100% - 40px); /* Account for padding */
 }
 
 .car-card {
+    position: relative;
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 15px;
     text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Optional shadow */
+}
+.cogwheel-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.cogwheel-icon {
+    height: 24px; /* Adjust size as needed */
+    width: 24px; /* Ensure the icon keeps its aspect ratio */
+}
+
+.dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: 40px; /* Position below the cogwheel */
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    padding: 10px;
+    z-index: 100; /* Make sure it's above other content */
+    display: none; /* Hide by default */
+}
+
+/* Display dropdown when cogwheel is clicked */
+.car-card:hover .dropdown-menu {
+    display: block;
 }
