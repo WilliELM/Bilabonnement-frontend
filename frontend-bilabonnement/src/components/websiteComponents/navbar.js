@@ -27,16 +27,20 @@ function Navbar() {
                     <Link to="/" className="navbar-link">Home</Link>
                 </li>
 
+
                 <li className='navbar-item' onClick={toggleCarsDropdown}>
-                    <Link to="/cars"><span className="navbar-link breeds-dropdown">Cars</span> </Link>
+                    <Link to="/cars"><span className="navbar-link breeds-dropdown">Biler</span> </Link>
                 </li>
 
                 <li className='navbar-item' onClick={toggleCustomersDropdown}>
-                    <Link to="/customers"> <span className="navbar-link breeds-dropdown">Customers</span> </Link>
+                    <Link to="/customers"> <span className="navbar-link breeds-dropdown">Kunder</span> </Link>
                 </li>
 
                 <li className='navbar-item' onClick={toggleSubscriptionsDropdown}>
-                    <Link to="/subscriptions"> <span className="navbar-link breeds-dropdown">Subscriptions</span> </Link>
+                    <Link to="/subscriptions"> <span className="navbar-link breeds-dropdown">Abonnementer</span> </Link>
+                </li>
+                <li className='navbar-item' onClick={toggleCarsDropdown}>
+                    <Link to="/KPI"><span className="navbar-link breeds-dropdown">KPI'er</span> </Link>
                 </li>
             </ul>
         </nav>

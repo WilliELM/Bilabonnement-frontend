@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import CarList from "./carList";
+import CarList from "./cars/carList";
 
 function SubscriptionList() {
     const [subscriptions, setSubscriptions] = useState([]);
@@ -31,7 +31,6 @@ function SubscriptionList() {
 
                         {/* Display car details */
                         <h3>Car Details</h3>}
-
                         <p>CarID: {subscription.car.id}</p>
                         <p>Name of car: {subscription.car.brand} {subscription.car.model}</p>
                         <p>Price: {subscription.car.price} kr.</p>
