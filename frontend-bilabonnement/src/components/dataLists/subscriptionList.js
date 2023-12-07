@@ -6,7 +6,7 @@ function SubscriptionList() {
     const [subscriptions, setSubscriptions] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/subscriptions')
+        axios.get('https://bilabonnementapi.azurewebsites.net/subscriptions')
             .then(response => {
                 setSubscriptions(response.data);
             })

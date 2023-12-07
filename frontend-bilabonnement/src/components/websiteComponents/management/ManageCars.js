@@ -26,7 +26,7 @@ function ManageCars() {
         e.preventDefault();
         if (carId) {
             // Update the car
-            axios.put(`http://localhost:8080/cars/${carId}`, newCar)
+            axios.put(`https://bilabonnementapi.azurewebsites.net/cars/${carId}`, newCar)
                 .then(response => {
                     alert('Car updated successfully!');
                 })
@@ -36,7 +36,7 @@ function ManageCars() {
                 });
         } else {
             // Create a new car
-            axios.post('http://localhost:8080/cars', newCar)
+            axios.post('https://bilabonnementapi.azurewebsites.net/cars', newCar)
                 .then(response => {
                     alert('Car created successfully!');
                 })
@@ -51,7 +51,7 @@ function ManageCars() {
 
     const handleDelete = () => {
         if (carId) {
-            axios.delete(`http://localhost:8080/cars/${carId}`)
+            axios.delete(`https://bilabonnementapi.azurewebsites.net/cars/${carId}`)
                 .then(response => {
                     alert('Car deleted successfully!');
                 })

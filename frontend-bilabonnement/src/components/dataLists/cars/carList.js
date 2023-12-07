@@ -20,7 +20,7 @@ function CarList() {
     }, []);
 
     const fetchCars = () => {
-        axios.get('http://localhost:8080/cars')
+        axios.get('https://bilabonnementapi.azurewebsites.net/cars')
             .then(response => {
                 setCars(response.data);
             })
@@ -49,7 +49,7 @@ function CarList() {
     };
 
     const deleteCar = (carId) => {
-        axios.delete(`http://localhost:8080/cars/${carId}`)
+        axios.delete(`https://bilabonnementapi.azurewebsites.net/cars/${carId}`)
             .then(response => {
                 fetchCars(); // Refresh the list after deletion
             })
