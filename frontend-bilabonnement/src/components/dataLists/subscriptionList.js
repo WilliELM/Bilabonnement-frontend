@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import CarList from "./carList";
 
 function SubscriptionList() {
     const [subscriptions, setSubscriptions] = useState([]);
@@ -17,8 +18,24 @@ function SubscriptionList() {
     return (
         <div>
             {subscriptions.map(subscription => (
-                <div key={subscription.id}>
-                    <p>Sub {subscription.id} with date {subscription.buydate}</p>
+                <div className="container" key={subscription.id}>
+
+                        <h2>Subscription Details</h2>
+                        <p>Buy Date: {subscription.buydate}</p>
+                        <p>Subscription Start: {subscription.substart}</p>
+                        <p>Subscription End: {subscription.subend}</p>
+                        <p>Kilometers Start: {subscription.kmstart}</p>
+                        <p>Kilometers Done: {subscription.kmdone}</p>
+                        <p>Kilometers Planned: {subscription.kmplanned}</p>
+                        <p>Subscription Time: {subscription.subtime} months</p>
+
+                        {/* Display car details */
+                        <h3>Car Details</h3>}
+                        {<CarList />}
+
+                        {/* Display customer details */}
+                        <h3>Customer Details</h3>
+                        {<customerList />}
                 </div>
             ))}
         </div>

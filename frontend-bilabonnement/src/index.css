@@ -220,3 +220,40 @@ h1 {
   color: #333;
   display: block;
 }
+
+/* CarDetail.css */
+
+/* Style for the container div */
+.container {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the heading */
+h2 {
+  color: #333;
+}
+
+/* Style for the individual detail paragraphs */
+p {
+  margin: 8px 0;
+  color: #666;
+}
+
+/* Style for the CarDetailsPage.css */
+
+/* Style for the main container div */
+.page-container {
+  max-width: 600px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+/* Style for the page heading */
+h1 {
+  color: #333;
+}
