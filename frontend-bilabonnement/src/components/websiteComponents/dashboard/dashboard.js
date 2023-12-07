@@ -10,15 +10,15 @@ function Dashboard() {
     const [subscriptions, setSubscriptions] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/cars')
+        axios.get('https://bilabonnementapi.azurewebsites.net/cars')
             .then(response => setCars(response.data))
             .catch(error => console.error('Error fetching cars', error));
 
-        axios.get('http://localhost:8080/customers')
+        axios.get('https://bilabonnementapi.azurewebsites.net/customers')
             .then(response => setCustomers(response.data))
             .catch(error => console.error('Error fetching customers', error));
 
-        axios.get('http://localhost:8080/subscriptions')
+        axios.get('https://bilabonnementapi.azurewebsites.net/subscriptions')
             .then(response => setSubscriptions(response.data))
             .catch(error => console.error('Error fetching subscriptions', error));
     }, []);

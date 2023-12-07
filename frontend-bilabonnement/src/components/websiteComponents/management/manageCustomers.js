@@ -21,7 +21,7 @@ function ManageCustomers() {
     }, []);
 
     const fetchCustomers = () => {
-        axios.get('http://localhost:8080/customers')
+        axios.get('https://bilabonnementapi.azurewebsites.net/customers')
             .then(response => {
                 setCustomers(response.data);
             })
@@ -40,7 +40,7 @@ function ManageCustomers() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8080/customers', newCustomer)
+        axios.post('https://bilabonnementapi.azurewebsites.net/customers', newCustomer)
             .then(response => {
                 setNewCustomer({
                     firstName: '',
@@ -60,7 +60,7 @@ function ManageCustomers() {
     };
 
     const handleDelete = (customerId) => {
-        axios.delete(`http://localhost:8080/customers/${customerId}`)
+        axios.delete(`https://bilabonnementapi.azurewebsites.net/customers/${customerId}`)
             .then(response => {
                 fetchCustomers(); // Refresh the list after deletion
             })

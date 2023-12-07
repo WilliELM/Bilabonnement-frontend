@@ -5,7 +5,7 @@ function CustomerList() {
     const [customers, setCustomers] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/customers')
+        axios.get('https://bilabonnementapi.azurewebsites.net/customers')
             .then(response => {
                 setCustomers(response.data);
             })

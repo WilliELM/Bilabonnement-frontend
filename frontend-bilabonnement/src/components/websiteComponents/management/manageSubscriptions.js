@@ -22,7 +22,7 @@ function ManageSubscriptions() {
     }, []);
 
     const fetchSubscriptions = () => {
-        axios.get('http://localhost:8080/subscriptions')
+        axios.get('https://bilabonnementapi.azurewebsites.net/subscriptions')
             .then(response => {
                 setSubscriptions(response.data);
             })
@@ -41,7 +41,7 @@ function ManageSubscriptions() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8080/subscriptions', newSubscription)
+        axios.post('https://bilabonnementapi.azurewebsites.net/subscriptions', newSubscription)
             .then(response => {
                 setNewSubscription({
                     buydate: '',
@@ -63,7 +63,7 @@ function ManageSubscriptions() {
     };
 
     const handleDelete = (subscriptionId) => {
-        axios.delete(`http://localhost:8080/subscriptions/${subscriptionId}`)
+        axios.delete(`https://bilabonnementapi.azurewebsites.net/subscriptions/${subscriptionId}`)
             .then(response => {
                 fetchSubscriptions();
             })
