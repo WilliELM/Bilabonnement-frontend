@@ -1,0 +1,28 @@
+.management {
+    padding: 20px;
+}
+
+.management h1 {
+    text-align: center;
+}
+
+.management-nav {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.management-nav a {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.management-nav a:hover {
+    background-color: #45a049;
+}

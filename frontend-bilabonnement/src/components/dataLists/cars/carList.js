@@ -2,18 +2,24 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import './carList.css';
+import { ReactComponent as CogwheelIcon } from './cogwheel-icon.svg'; // Import a cogwheel icon
 
+import './carList.css';
 
 function CarList() {
     const [cars, setCars] = useState([]);
     const [filters, setFilters] = useState({
-        brand: '',  // Changed from model to brand
+        brand: '',
         maxPrice: Infinity,
-        availability: true  // Default checked
+        availability: true
     });
+    const [showDropdown, setShowDropdown] = useState({}); // State to manage dropdown visibility
 
     useEffect(() => {
+        fetchCars();
+    }, []);
+
+    const fetchCars = () => {
         axios.get('http://localhost:8080/cars')
             .then(response => {
                 setCars(response.data);
@@ -21,7 +27,12 @@ function CarList() {
             .catch(error => {
                 console.error('Error fetching cars', error);
             });
-    }, []);
+    };
+    const [activeDropdown, setActiveDropdown] = useState(null);
+
+    const toggleDropdown = (carId) => {
+        setActiveDropdown(activeDropdown === carId ? null : carId);
+    };
 
     const handleFilterChange = (e) => {
         setFilters({
@@ -37,6 +48,23 @@ function CarList() {
         });
     };
 
+    const deleteCar = (carId) => {
+        axios.delete(`http://localhost:8080/cars/${carId}`)
+            .then(response => {
+                fetchCars(); // Refresh the list after deletion
+            })
+            .catch(error => {
+                console.error('Error deleting car', error);
+            });
+    };
+
+    const updateCar = (car) => {
+        // You would implement the update functionality here
+        // This might involve setting a state variable with the car's current data
+        // and showing a form where the user can edit the car's details
+        console.log(`Update car: ${JSON.stringify(car)}`);
+    };
+
     const filteredCars = () => {
         return cars.filter(car => {
             const filterBrand = filters.brand.trim().toLowerCase();
@@ -48,10 +76,10 @@ function CarList() {
             return matchesBrand && matchesPrice && matchesAvailability;
         });
     };
-
     return (
-        <div className="carlist-container">
+        <div className="page-container">
             <div className="filters-container">
+                {/* Filters and inputs */}
                 <input
                     name="brand"
                     placeholder="Brand"
@@ -77,16 +105,30 @@ function CarList() {
                 />
             </div>
             <div className="cars-container">
-            {filteredCars().map(car => (
-                <div className="car-card" key={car.id}>
-                    <h2>{`${car.brand} ${car.model}`}</h2>
-                    <p>Pris: Dkk {car.price},-</p>
-                    <p>Brændstof: {car.fueltype}</p>
-                    <p>Registreringsnummer: {car.regNr}</p>
-                    <p>Nummerplade: {car.nummerplade}</p>
-                </div>
-            ))}
-             </div>
+                {filteredCars().map(car => (
+                    <div className="car-card" key={car.id}>
+                        {/* Car details */}
+                        <h2>{`${car.brand} ${car.model}`}</h2>
+                        <p>Pris: Dkk {car.price},-</p>
+                        <p>Brændstof: {car.fueltype}</p>
+                        <p>Registreringsnummer: {car.regNr}</p>
+                        <p>Nummerplade: {car.nummerplade}</p>
+                        <p>Car ID: {car.id}</p>
+                        {/* Cogwheel Icon to toggle dropdown */}
+                        <button className="cogwheel-button" onClick={() => toggleDropdown(car.id)}>
+                            <CogwheelIcon className="cogwheel-icon" />
+                        </button>
+
+                        {/* Dropdown menu for update and delete */}
+                        {activeDropdown === car.id && (
+                            <div className="dropdown-menu">
+                                <button onClick={() => updateCar(car)}>Update</button>
+                                <button onClick={() => deleteCar(car.id)}>Delete</button>
+                            </div>
+                        )}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
