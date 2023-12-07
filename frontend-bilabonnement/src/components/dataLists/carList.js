@@ -17,9 +17,14 @@ function CarList() {
     return (
         <div>
             {cars.map(car => (
-                <div key={car.id}>
+                <div className="container" key={car.id}>
                     {car.data}
-                    <p>{car.model} - {car.brand} - {car.price}</p>
+                    <h2>{`${car.brand} ${car.model}`}</h2>
+                    <p>Price: Dkk {car.price},-</p>
+                    <p>Fuel Type: {car.fueltype}</p>
+                    <p>Registration Number: {car.regNr}</p>
+                    <p>License Plate: {car.nummerplade}</p>
+                    <p>Car Free: {car.carFree ? 'Yes' : 'No'}</p>
                 </div>
             ))}
         </div>

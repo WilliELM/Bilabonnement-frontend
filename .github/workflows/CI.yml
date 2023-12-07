@@ -1,0 +1,54 @@
+name: Build and push to default branch
+
+on:
+  push:
+    branches-ignore:
+      - main
+
+env:
+  GITHUB_TOKEN: ${{ secrets.YOUR_PERSONAL_ACCESS_TOKEN }}
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.MY_TOKEN || github.token }}
+          fetch-depth: 0
+
+      - name: Get default branch name
+        id: default_branch
+        run: echo "::set-output name=branch::$(git remote show origin | awk '/HEAD branch/ {print $NF}')"
+
+      - name: Rebase branch
+        run: |
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git config --global user.name "${GITHUB_ACTOR}"
+          git rebase origin/${{ steps.default_branch.outputs.branch }}
+
+      - name: Build code
+        uses: gradle/gradle-build-action@v2
+        with:
+          args: build
+
+  push-if-success:
+    needs: build-and-push
+    if: success()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Push changes to default target branch
+        run: |
+          set -ex
+          TARGET_BRANCH=$(git remote show origin | awk '/HEAD branch/ {print $NF}')
+          git push origin HEAD:${TARGET_BRANCH}
+      
+      - name: Delete issue branch
+        if: startsWith(github.ref, 'refs/heads/issue/') && github.event_name == 'push'
+        run: |
+          set -ex
+          git push origin --delete "${GITHUB_REF#refs/heads/}"

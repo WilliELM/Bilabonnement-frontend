@@ -1,21 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
-import CarList from "./components/carList";
-import SubscriptionList from "./components/subscriptionList";
-import CustomerList from "./components/customerList";
+import CarList from "./components/dataLists/carList";
+import SubscriptionList from "./components/dataLists/subscriptionList";
+import CustomerList from "./components/dataLists/customerList";
+import Navbar from "./components/websiteComponents/navbar";
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 
 function App() {
-  return (
-    <div className="App">
-        <p>
-            <CarList></CarList>
-            <SubscriptionList></SubscriptionList>
-            <CustomerList></CustomerList>
-
-            <div>Hello</div>
-        </p>
-    </div>
-  );
-}
+    return (
+        <Router>
+            <div className="App">
+                <header className="App-header">
+                    <Navbar />
+                </header>
+                <div className="content">
+                    <Routes>
+                        <Route path="/cars" element={<CarList />} />
+                        <Route path="/customers" element={<CustomerList />} />
+                        <Route path="/subscriptions" element={<SubscriptionList />} />
+                    </Routes>
+                </div>
+            </div>
+        </Router>
+    )}
 
 export default App;
