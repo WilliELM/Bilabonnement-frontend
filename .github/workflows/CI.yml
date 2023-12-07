@@ -18,18 +18,18 @@ jobs:
           token: ${{ secrets.MY_TOKEN || github.token }}
           fetch-depth: 0
 
-      - name: Fetch latest changes from remote
+      - name: Fetch latest changes from all branches
         run: git fetch --all
 
       - name: Get default branch name
         id: default_branch
         run: echo "::set-output name=branch::$(git remote show origin | awk '/HEAD branch/ {print $NF}')"
 
-      - name: Rebase branch
+      - name: Rebase branch onto the latest main
         run: |
           git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
           git config --global user.name "${GITHUB_ACTOR}"
-          git rebase origin/${{ steps.default_branch.outputs.branch }}
+          git rebase origin/main
 
       - name: Build code
         uses: gradle/gradle-build-action@v2
@@ -44,12 +44,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Push changes to default target branch
+      - name: Push changes to main branch
         run: |
           set -ex
-          TARGET_BRANCH=$(git remote show origin | awk '/HEAD branch/ {print $NF}')
-          git push --force-with-lease origin HEAD:${TARGET_BRANCH}
-      
+          git push --force-with-lease origin HEAD:main
+
       - name: Delete issue branch
         if: startsWith(github.ref, 'refs/heads/issue/') && github.event_name == 'push'
         run: |
