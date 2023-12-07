@@ -1,5 +1,5 @@
 import './App.css';
-import CarList from "./components/dataLists/carList";
+import CarList from "./components/dataLists/cars/carList";
 import SubscriptionList from "./components/dataLists/subscriptionList";
 import CustomerList from "./components/dataLists/customerList";
 import Navbar from "./components/websiteComponents/navbar";

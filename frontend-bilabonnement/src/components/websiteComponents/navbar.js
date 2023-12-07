@@ -28,15 +28,15 @@ function Navbar() {
                 </li>
 
                 <li className='navbar-item' onClick={toggleCarsDropdown}>
-                    <Link to="/cars"><span className="navbar-link breeds-dropdown">Cars</span> </Link>
+                    <Link to="/cars"><span className="navbar-link breeds-dropdown">Biler</span> </Link>
                 </li>
 
                 <li className='navbar-item' onClick={toggleCustomersDropdown}>
-                    <Link to="/customers"> <span className="navbar-link breeds-dropdown">Customers</span> </Link>
+                    <Link to="/customers"> <span className="navbar-link breeds-dropdown">Kunder</span> </Link>
                 </li>
 
                 <li className='navbar-item' onClick={toggleSubscriptionsDropdown}>
-                    <Link to="/subscriptions"> <span className="navbar-link breeds-dropdown">Subscriptions</span> </Link>
+                    <Link to="/subscriptions"> <span className="navbar-link breeds-dropdown">Abonnementer</span> </Link>
                 </li>
             </ul>
         </nav>

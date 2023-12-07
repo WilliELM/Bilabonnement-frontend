@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import './carList.css';
+
 
 function CarList() {
     const [cars, setCars] = useState([]);
@@ -48,8 +50,8 @@ function CarList() {
     };
 
     return (
-        <div>
-            <div className="filters">
+        <div className="carlist-container">
+            <div className="filters-container">
                 <input
                     name="brand"
                     placeholder="Brand"
@@ -74,14 +76,17 @@ function CarList() {
                     label="Available Only"
                 />
             </div>
-
+            <div className="cars-container">
             {filteredCars().map(car => (
-                <div className="container" key={car.id}>
+                <div className="car-card" key={car.id}>
                     <h2>{`${car.brand} ${car.model}`}</h2>
-                    <p>Price: Dkk {car.price},-</p>
-                    <p>IsCarFree: {car.carFree.toString()}</p>
+                    <p>Pris: Dkk {car.price},-</p>
+                    <p>Brændstof: {car.fueltype}</p>
+                    <p>Registreringsnummer: {car.regNr}</p>
+                    <p>Nummerplade: {car.nummerplade}</p>
                 </div>
             ))}
+             </div>
         </div>
     );
 }

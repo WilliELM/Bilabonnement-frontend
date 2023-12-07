@@ -1,0 +1,25 @@
+.carlist-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filters-container {
+    width: 20%; /* Adjust as needed */
+    padding: 20px;
+    border-right: 1px solid #ddd; /* Just for visual separation */
+}
+
+.cars-container {
+    width: 75%; /* Adjust as needed */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Creates a responsive grid */
+    grid-gap: 20px;
+    padding: 20px;
+}
+
+.car-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+}

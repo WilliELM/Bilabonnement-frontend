@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import CarList from "./carList";
+import CarList from "./cars/carList";
 
 function SubscriptionList() {
     const [subscriptions, setSubscriptions] = useState([]);
