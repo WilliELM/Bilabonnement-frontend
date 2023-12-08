@@ -47,7 +47,7 @@ jobs:
         run: git fetch origin main
 
       - name: Merge latest main into current branch
-        run: git merge origin/main
+        run: git merge origin/main --allow-unrelated-histories
 
       - name: Push changes to main branch
         run: |

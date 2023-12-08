@@ -77,9 +77,7 @@ function ManageCars() {
                 <button type="submit">{carId ? 'Update Car' : 'Create Car'}</button>
             </form>
 
-            <div>
-                <input type="text" value={carId} onChange={handleCarIdChange} placeholder="Car ID for update" />
-            </div>
+
         </div>
     );
 }

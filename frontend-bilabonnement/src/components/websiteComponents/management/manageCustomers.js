@@ -71,22 +71,20 @@ function ManageCustomers() {
 
     return (
         <div>
-            <h2>Manage Customers</h2>
             <form onSubmit={handleSubmit}>
-                {/* Input fields */}
-                {/* ... */}
+                <input type="text" name="firstName" value={newCustomer.firstName} onChange={handleChange} placeholder="First Name" />
+                <input type="text" name="lastName" value={newCustomer.lastName} onChange={handleChange} placeholder="Last Name" />
+                <input type="text" name="address" value={newCustomer.address} onChange={handleChange} placeholder="Address" />
+                <input type="text" name="zipcode" value={newCustomer.zipcode} onChange={handleChange} placeholder="Zip code" />
+                <input type="text" name="city" value={newCustomer.city} onChange={handleChange} placeholder="City" />
+                <input type="text" name="phone" value={newCustomer.phone} onChange={handleChange} placeholder="Phone number" />
+                <input type="text" name="email" value={newCustomer.email} onChange={handleChange} placeholder="Email" />
+                <input type="text" name="cpr" value={newCustomer.cpr} onChange={handleChange} placeholder="Cpr-number" />
+
+                {/* Add input/select for subscriptions if needed */}
                 <button type="submit">Add Customer</button>
             </form>
 
-            <h3>Customer List</h3>
-            <ul>
-                {customers.map(customer => (
-                    <li key={customer.id}>
-                        {customer.firstName} {customer.lastName}
-                        <button onClick={() => handleDelete(customer.id)}>Delete</button>
-                    </li>
-                ))}
-            </ul>
         </div>
     );
 }

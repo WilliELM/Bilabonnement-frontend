@@ -10,7 +10,7 @@ function CarList() {
     const [cars, setCars] = useState([]);
     const [filters, setFilters] = useState({
         brand: '',
-        maxPrice: Infinity,
+        nummerplade:'',
         availability: true
     });
     const [editingCar, setEditingCar] = useState(null);
@@ -46,7 +46,7 @@ function CarList() {
     const handleAvailabilityChange = (event) => {
         setFilters({
             ...filters,
-            availability: event.target.checked
+            availability: event.target.unchecked
         });
     };
 
@@ -92,12 +92,15 @@ function CarList() {
     const filteredCars = () => {
         return cars.filter(car => {
             const filterBrand = filters.brand.trim().toLowerCase();
+            const filterNummerplade = filters.nummerplade.trim().toLowerCase();
+            const matchesNummerplade = filterNummerplade === '' || car.nummerplade.toLowerCase().includes(filterNummerplade);
+
             const filterMaxPrice = parseFloat(filters.maxPrice) || Infinity;
             const matchesBrand = filterBrand === '' || car.brand.toLowerCase().includes(filterBrand);
             const matchesPrice = isNaN(filterMaxPrice) || car.price <= filterMaxPrice;
             const matchesAvailability = !filters.availability || car.carFree;
 
-            return matchesBrand && matchesPrice && matchesAvailability;
+            return matchesBrand && matchesPrice && matchesAvailability && matchesNummerplade;
         });
     };
     return (
@@ -111,16 +114,15 @@ function CarList() {
                     onChange={handleFilterChange}
                 />
                 <input
-                    name="maxPrice"
-                    type="number"
-                    placeholder="Max Price"
-                    value={filters.maxPrice === Infinity ? '' : filters.maxPrice}
+                    name="nummerplade"
+                    placeholder="Nummerplade"
+                    value={filters.nummerplade}
                     onChange={handleFilterChange}
                 />
                 <FormControlLabel
                     control={
                         <Switch
-                            checked={filters.availability}
+                            unchecked={filters.availability}
                             onChange={handleAvailabilityChange}
                             name="availability"
                         />
@@ -138,12 +140,13 @@ function CarList() {
                         <p>Registreringsnummer: {car.regNr}</p>
                         <p>Nummerplade: {car.nummerplade}</p>
                         <p>Car ID: {car.id}</p>
+
                         {/* Cogwheel Icon to toggle dropdown */}
                         <button className="cogwheel-button" onClick={() => openPopup(car)}>
+
                             <CogwheelIcon className="cogwheel-icon" />
                         </button>
 
-                        {/* Dropdown menu for update and delete */}
                         {activeDropdown === car.id && (
                             <div className="dropdown-menu">
                                 <button onClick={() => openPopup(car)}>Update</button>

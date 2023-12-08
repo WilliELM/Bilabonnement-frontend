@@ -1,6 +1,7 @@
 // ManageSubscriptions.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import "./management.css"
 
 function ManageSubscriptions() {
     const [subscriptions, setSubscriptions] = useState([]); // State to store existing subscriptions
@@ -74,32 +75,31 @@ function ManageSubscriptions() {
 
     return (
         <div>
-            <h2>Manage Subscriptions</h2>
             <form onSubmit={handleSubmit}>
+                <div className="description">Enter buy date</div>
                 <input type="date" name="buydate" value={newSubscription.buydate} onChange={handleChange} placeholder="Buy Date" />
+                <div className="description">Enter subscription start</div>
                 <input type="date" name="substart" value={newSubscription.substart} onChange={handleChange} placeholder="Subscription Start" />
+                <div className="description">Enter subscription end</div>
                 <input type="date" name="subend" value={newSubscription.subend} onChange={handleChange} placeholder="Subscription End" />
+                <div className="description">Enter Km start</div>
                 <input type="number" name="kmstart" value={newSubscription.kmstart} onChange={handleChange} placeholder="KM Start" />
+                <div className="description">Enter Km done</div>
                 <input type="number" name="kmdone" value={newSubscription.kmdone} onChange={handleChange} placeholder="KM Done" />
+                <div className="description">Enter Km planned</div>
                 <input type="number" name="kmplanned" value={newSubscription.kmplanned} onChange={handleChange} placeholder="KM Planned" />
+                <div className="description">Enter Subscription time (months)</div>
                 <input type="number" name="subtime" value={newSubscription.subtime} onChange={handleChange} placeholder="Subscription Time" />
+
+
                 {/* Placeholder inputs for car, customer, and damage report selection */}
-                {/* You will need to implement actual selection components */}
                 <input type="text" name="carId" value={newSubscription.carId} onChange={handleChange} placeholder="Car ID" />
                 <input type="text" name="customerId" value={newSubscription.customerId} onChange={handleChange} placeholder="Customer ID" />
                 <input type="text" name="damageReportId" value={newSubscription.damageReportId} onChange={handleChange} placeholder="Damage Report ID" />
                 <button type="submit">Add Subscription</button>
             </form>
 
-            <h3>Subscription List</h3>
-            <ul>
-                {subscriptions.map(subscription => (
-                    <li key={subscription.id}>
-                        {subscription.substart} - {subscription.subend}
-                        <button onClick={() => handleDelete(subscription.id)}>Delete</button>
-                    </li>
-                ))}
-            </ul>
+
         </div>
     );
 }
