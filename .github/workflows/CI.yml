@@ -36,17 +36,22 @@ jobs:
           args: build
 
   push-if-success:
-    needs: build-and-push
-    if: success()
-    runs-on: ubuntu-latest
-    steps:
+      needs: build-and-push
+      if: success()
+      runs-on: ubuntu-latest
+      steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Set up Git user information
+        run: |
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git config --global user.name "${GITHUB_ACTOR}"
 
       - name: Fetch latest changes from main branch
         run: git fetch origin main
 
-      - name: Merge latest main into current branch
+      - name: Merge latest main into current branch with unrelated histories
         run: git merge origin/main --allow-unrelated-histories
 
       - name: Push changes to main branch
