@@ -13,6 +13,8 @@ function CarList() {
         nummerplade:'',
         availability: true
     });
+    const [editingCar, setEditingCar] = useState(null);
+    const [isPopupOpen, setPopupOpen] = useState(false);
     const [showDropdown, setShowDropdown] = useState({}); // State to manage dropdown visibility
 
     useEffect(() => {
@@ -48,21 +50,44 @@ function CarList() {
         });
     };
 
-    const deleteCar = (carId) => {
-        axios.delete(`https://bilabonnementapi.azurewebsites.net/cars/${carId}`)
-            .then(response => {
-                fetchCars(); // Refresh the list after deletion
-            })
-            .catch(error => {
-                console.error('Error deleting car', error);
-            });
+
+
+    const openPopup = (car) => {
+        setEditingCar(car);
+        setPopupOpen(true);
     };
 
-    const updateCar = (car) => {
-        // You would implement the update functionality here
-        // This might involve setting a state variable with the car's current data
-        // and showing a form where the user can edit the car's details
-        console.log(`Update car: ${JSON.stringify(car)}`);
+    const closePopup = () => {
+        setEditingCar(null);
+        setPopupOpen(false);
+    };
+
+    const handleEditChange = (e) => {
+        setEditingCar({
+            ...editingCar,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const handleUpdateCar = () => {
+        // Implement the update functionality here
+        axios.put(`https://bilabonnementapi.azurewebsites.net/cars/${editingCar.id}`, editingCar)
+            .then(response => {
+                closePopup(); // Close the popup after successful update
+                fetchCars(); // Refresh the list after update
+            })
+            .catch(error => {
+                console.error('Error updating car', error);
+            });
+    };
+    const deleteCar = async (carId) => {
+        try {
+            await axios.delete(`https://bilabonnementapi.azurewebsites.net/cars/${carId}`);
+            closePopup(); // Close the popup after successful deletion
+            fetchCars(); // Refresh the list after deletion
+        } catch (error) {
+            console.error('Error deleting car', error);
+        }
     };
 
     const filteredCars = () => {
@@ -109,24 +134,90 @@ function CarList() {
             <div className="cars-container">
                 {filteredCars().map(car => (
                     <div className="car-card" key={car.id}>
-                        {/* Car details */}
-                        <img src={car.img} alt={`${car.brand} ${car.model}`} className="car-image"></img>
+                        <img src={car.img} alt={`${car.brand} ${car.model}`} className="car-image" />
                         <h2>{`${car.brand} ${car.model}`}</h2>
                         <p>Pris: Dkk {car.price},-</p>
                         <p>Brændstof: {car.fueltype}</p>
                         <p>Registreringsnummer: {car.regNr}</p>
                         <p>Nummerplade: {car.nummerplade}</p>
                         <p>Car ID: {car.id}</p>
-                        <button className="cogwheel-button" onClick={() => toggleDropdown(car.id)}>
+
+                        {/* Cogwheel Icon to toggle dropdown */}
+                        <button className="cogwheel-button" onClick={() => openPopup(car)}>
+
                             <CogwheelIcon className="cogwheel-icon" />
                         </button>
 
                         {activeDropdown === car.id && (
                             <div className="dropdown-menu">
-                                <button onClick={() => updateCar(car)}>Update</button>
+                                <button onClick={() => openPopup(car)}>Update</button>
                                 <button onClick={() => deleteCar(car.id)}>Delete</button>
                             </div>
-                        )}
+                            )}
+                            {/* Overlay */}
+                            <div className={`overlay ${isPopupOpen ? 'active' : ''}`} onClick={closePopup}>
+                            </div>
+                            {/* Popup for editing car */}
+                             {isPopupOpen && (
+                                      <div className={`popup ${isPopupOpen ? 'active' : ''}`}>
+                                        <button className="close-icon" onClick={closePopup}>
+                                         &times;{/* "X" character for close icon */}
+                                         </button>
+                                    <h2>Edit Car</h2>
+                                    <label>
+                                        Model:
+                                        <input
+                                            type="text"
+                                            name="model"
+                                            value={editingCar.model}
+                                            onChange={handleEditChange}
+                                        />
+                                    </label>
+                                    <label>
+                                        Price:
+                                        <input
+                                            type="number"
+                                            name="price"
+                                            value={editingCar.price}
+                                            onChange={handleEditChange}
+                                        />
+                                    </label>
+                                    <label>
+                                        Fuel Type:
+                                        <input
+                                            type="text"
+                                            name="fueltype"
+                                            value={editingCar.fueltype}
+                                            onChange={handleEditChange}
+                                        />
+                                    </label>
+                                    <label>
+                                        Registration Number:
+                                        <input
+                                            type="text"
+                                            name="regNr"
+                                            value={editingCar.regNr}
+                                            onChange={handleEditChange}
+                                        />
+                                    </label>
+                                    <label>
+                                        Number Plate:
+                                        <input
+                                            type="text"
+                                            name="nummerplade"
+                                            value={editingCar.nummerplade}
+                                            onChange={handleEditChange}
+                                        />
+                                    </label>
+                                    <div className="button-container">
+                                        <button className="update-button" onClick={handleUpdateCar}>
+                                            Update
+                                        </button>
+                                        <button className="delete-button" onClick={() => deleteCar(car.id)}>Delete</button>
+
+                                    </div>
+                                </div>
+                                )}
                     </div>
                 ))}
             </div>
