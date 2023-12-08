@@ -50,15 +50,7 @@ function CarList() {
         });
     };
 
-    const deleteCar = (carId) => {
-        axios.delete(`https://bilabonnementapi.azurewebsites.net/cars/${carId}`)
-            .then(response => {
-                fetchCars(); // Refresh the list after deletion
-            })
-            .catch(error => {
-                console.error('Error deleting car', error);
-            });
-    };
+    
 
     const openPopup = (car) => {
         setEditingCar(car);
@@ -87,6 +79,15 @@ function CarList() {
             .catch(error => {
                 console.error('Error updating car', error);
             });
+    };
+    const deleteCar = async (carId) => {
+        try {
+            await axios.delete(`https://bilabonnementapi.azurewebsites.net/cars/${carId}`);
+            closePopup(); // Close the popup after successful deletion
+            fetchCars(); // Refresh the list after deletion
+        } catch (error) {
+            console.error('Error deleting car', error);
+        }
     };
 
     const filteredCars = () => {
@@ -215,7 +216,6 @@ function CarList() {
                                         <button className="delete-button" onClick={() => deleteCar(car.id)}>Delete</button>
                                             
                                     </div>
-
                                 </div>
                                 )}
                     </div>
