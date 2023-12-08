@@ -104,8 +104,8 @@ const SubscriptionList = () => {
                         <td>{subscription.kmdone}</td>
                         <td>{subscription.kmplanned}</td>
                         <td>{subscription.subtime} months</td>
-                        <td>{subscription.customer.id}</td>
-                        <td>{subscription.car.id}</td>
+                        <td>{subscription.customer ? subscription.customer.id : 'N/A'}</td>
+                        <td>{subscription.car ? subscription.car.id : 'N/A'}</td>
                         <td>
                             <button className="edit-btn" onClick={() => handleEditClick(subscription)}>Edit</button>
                             <button className="delete-btn" onClick={() => handleDelete(subscription.id)}>Delete</button>

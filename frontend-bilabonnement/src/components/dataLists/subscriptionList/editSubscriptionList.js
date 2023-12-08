@@ -106,7 +106,7 @@ const EditSubscriptionModal = ({ subscription, onClose, onSave }) => {
                         <input
                             type="text"
                             name="customerId"
-                            value={formData.customerId}
+                            value={formData.customerId && null}
                             onChange={handleChange}
                         />
                     </div>
@@ -115,7 +115,7 @@ const EditSubscriptionModal = ({ subscription, onClose, onSave }) => {
                         <input
                             type="text"
                             name="carId"
-                            value={formData.carId}
+                            value={formData.carId && null}
                             onChange={handleChange}
                         />
                     </div>
