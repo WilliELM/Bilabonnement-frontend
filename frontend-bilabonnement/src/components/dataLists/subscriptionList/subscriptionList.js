@@ -1,32 +1,49 @@
+// SubscriptionList.js
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import "./subscriptionList.css"
+import "./subscriptionList.css";
+import EditSubscriptionModal from "./editSubscriptionList"; // Ensure this path is correct
 
 const SubscriptionList = () => {
     const [subscriptions, setSubscriptions] = useState([]);
+    const [editingSubscription, setEditingSubscription] = useState(null);
     const [sortConfig, setSortConfig] = useState(null);
 
     useEffect(() => {
-        // Fetch data from API
         axios.get('https://bilabonnementapi.azurewebsites.net/subscriptions')
-            .then(response => setSubscriptions(response.data))
-            .catch(error => console.error('Error fetching subscriptions', error));
+            .then(response => {
+                setSubscriptions(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching subscriptions', error);
+            });
     }, []);
 
     const handleDelete = subscriptionId => {
-        // Implement delete functionality
         axios.delete(`https://bilabonnementapi.azurewebsites.net/subscriptions/${subscriptionId}`)
             .then(() => {
-                // Remove the deleted subscription from the state
                 setSubscriptions(subscriptions.filter(sub => sub.id !== subscriptionId));
             })
-            .catch(error => console.error('Error deleting subscription', error));
+            .catch(error => {
+                console.error('Error deleting subscription', error);
+            });
     };
 
-    const handleEdit = subscription => {
-        // Implement edit functionality
-        // For example, set a state to show an edit form
-        console.log('Edit functionality not implemented yet');
+    const handleEditClick = (subscription) => {
+        setEditingSubscription(subscription);
+    };
+
+
+    const handleUpdate = updatedSubscription => {
+        axios.put(`https://bilabonnementapi.azurewebsites.net/subscriptions/${updatedSubscription.id}`, updatedSubscription)
+            .then(() => {
+                setSubscriptions(subscriptions.map(sub => sub.id === updatedSubscription.id ? updatedSubscription : sub));
+                setEditingSubscription(null);
+            })
+            .catch(error => {
+                console.error('Error updating subscription', error);
+            });
     };
 
     const handleSort = (key) => {
@@ -55,6 +72,13 @@ const SubscriptionList = () => {
 
     return (
         <div className="page-container">
+            {editingSubscription && (
+                <EditSubscriptionModal
+                    subscription={editingSubscription}
+                    onClose={() => setEditingSubscription(null)}
+                    onSave={handleUpdate}
+                />
+            )}
             <table>
                 <thead>
                 <tr>
@@ -83,13 +107,12 @@ const SubscriptionList = () => {
                         <td>{subscription.customer.id}</td>
                         <td>{subscription.car.id}</td>
                         <td>
-                            <button className="edit-btn" onClick={() => handleEdit(subscription)}>Edit</button>
+                            <button className="edit-btn" onClick={() => handleEditClick(subscription)}>Edit</button>
                             <button className="delete-btn" onClick={() => handleDelete(subscription.id)}>Delete</button>
                         </td>
                     </tr>
                 ))}
-                </tbody>
-            </table>
+                </tbody>            </table>
         </div>
     );
 };
