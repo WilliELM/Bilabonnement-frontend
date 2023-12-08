@@ -1,21 +1,23 @@
 import React from 'react';
 import {Link, Routes, Route, Router} from 'react-router-dom';
-import ManageCars from './ManageCars'; // Assume you have a ManageCars component
-import ManageCustomers from './manageCustomers'; // Assume you have a ManageCustomers component
-import ManageSubscriptions from './manageSubscriptions'; // Assume you have a ManageSubscriptions component
-import './management.css'; // You will need to create this CSS file for styling
+import ManageCars from './ManageCars';
+import ManageCustomers from './manageCustomers';
+import ManageSubscriptions from './manageSubscriptions';
+import { NavLink } from 'react-router-dom';
+
+import './management.css';
 
 function Management() {
     return (
 
         <div className="management">
-            <h1>Management Dashboard</h1>
             <nav className="management-nav">
-                <Link to="cars">Manage Cars</Link>
-                <Link to="customers">Manage Customers</Link>
-                <Link to="subscriptions">Manage Subscriptions</Link>
+                <NavLink to="cars" className={({ isActive }) => isActive ? 'active-link' : ''}>Manage Cars</NavLink>
+                <NavLink to="customers" className={({ isActive }) => isActive ? 'active-link' : ''}>Manage Customers</NavLink>
+                <NavLink to="subscriptions" className={({ isActive }) => isActive ? 'active-link' : ''}>Manage Subscriptions</NavLink>
             </nav>
-
+            <h2>Management</h2>
+            <div>Press one of the above buttons to create new cars, customers or subscriptions</div>
             <Routes>
                 <Route path="cars" element={<ManageCars />} />
                 <Route path="customers" element={<ManageCustomers />} />
