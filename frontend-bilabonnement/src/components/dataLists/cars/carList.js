@@ -110,6 +110,7 @@ function CarList() {
                 {filteredCars().map(car => (
                     <div className="car-card" key={car.id}>
                         {/* Car details */}
+                        <img src={car.img}></img>
                         <h2>{`${car.brand} ${car.model}`}</h2>
                         <p>Pris: Dkk {car.price},-</p>
                         <p>Brændstof: {car.fueltype}</p>
