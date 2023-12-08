@@ -1,6 +1,6 @@
 import './App.css';
 import CarList from "./components/dataLists/cars/carList";
-import SubscriptionList from "./components/dataLists/subscriptionList";
+import SubscriptionList from "./components/dataLists/subscriptionList/subscriptionList";
 import CustomerList from "./components/dataLists/customerList";
 import Navbar from "./components/websiteComponents/navbar";
 import Dashboard from './components/websiteComponents/dashboard/dashboard'; // Import the Dashboard component
