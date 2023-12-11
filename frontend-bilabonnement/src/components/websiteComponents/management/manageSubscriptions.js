@@ -97,7 +97,7 @@ function ManageSubscriptions() {
                 <input type="text" name="carId" value={newSubscription.carId} onChange={handleChange} placeholder="Car ID" />
                 <input type="text" name="customerId" value={newSubscription.customerId} onChange={handleChange} placeholder="Customer ID" />
                 <input type="text" name="damageReportId" value={newSubscription.damageReportId} onChange={handleChange} placeholder="Damage Report ID" />
-                <button type="submit">Create Subscription</button>
+                <button className="Button-update" type="submit">Create Subscription</button>
             </form>
 
 

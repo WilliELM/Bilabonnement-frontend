@@ -81,7 +81,7 @@ input {
     font-size: 16px;
 }
 
-button {
+.Button-update {
     width: 100%;
     margin-top: 15px;
     padding: 10px;
@@ -94,7 +94,7 @@ button {
     transition: background-color 0.3s ease;
 }
 
-button:hover {
+.Button-update:hover {
     background-color: #2980b9;
 }
 

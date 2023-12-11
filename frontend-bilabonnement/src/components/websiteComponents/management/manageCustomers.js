@@ -84,7 +84,7 @@ function ManageCustomers() {
                 <input type="text" name="cpr" value={newCustomer.cpr} onChange={handleChange} placeholder="Cpr-number" />
 
                 {/* Add input/select for subscriptions if needed */}
-                <button type="submit">Create Customer</button>
+                <button className="Button-update" type="submit">Create Customer</button>
             </form>
 
         </div>

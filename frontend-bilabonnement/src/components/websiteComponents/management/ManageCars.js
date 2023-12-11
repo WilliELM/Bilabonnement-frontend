@@ -76,7 +76,7 @@ function ManageCars() {
                 <input type="text" name="nummerplade" value={newCar.nummerplade} onChange={handleChange} placeholder="Nummerplade" />
 
                 {/* Add input/select for subscriptions if needed */}
-                <button type="submit">{carId ? 'Update Car' : 'Create Car'}</button>
+                <button className="Button-update" type="submit">{carId ? 'Update Car' : 'Create Car'}</button>
             </form>
 
 

@@ -69,7 +69,7 @@ function ManageDmgReports() {
                 <input type="text" name="subscriptionId" value={newDamageReport.subscriptionId} onChange={handleChange} placeholder="Subscription ID" />
                 <input type="text" name="damageDescription" value={newDamageReport.damageDescription} onChange={handleChange} placeholder="Damage Description" />
 
-                <button type="submit">Create Damage Report</button>
+                <button className="Button-update" type="submit">Create Damage Report</button>
             </form>
         </div>
     );
