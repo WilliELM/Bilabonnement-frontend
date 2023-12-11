@@ -65,7 +65,9 @@ function ManageCars() {
 
     return (
         <div>
+
             <form onSubmit={handleSubmit}>
+                <h2> Create new Cars </h2>
                 <input type="text" name="brand" value={newCar.brand} onChange={handleChange} placeholder="Brand" />
                 <input type="text" name="model" value={newCar.model} onChange={handleChange} placeholder="Model" />
                 <input type="text" name="price" value={newCar.price} onChange={handleChange} placeholder="Price" />

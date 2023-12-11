@@ -61,7 +61,9 @@ function ManageDmgReports() {
 
     return (
         <div>
+
             <form onSubmit={handleSubmit}>
+                <h2> Create new damage report </h2>
                 <input type="number" name="cleaningCost" value={newDamageReport.cleaningCost} onChange={handleChange} placeholder="Cleaning Cost" />
                 <input type="number" name="repairCost" value={newDamageReport.repairCost} onChange={handleChange} placeholder="Repair Cost" />
                 <input type="text" name="subscriptionId" value={newDamageReport.subscriptionId} onChange={handleChange} placeholder="Subscription ID" />

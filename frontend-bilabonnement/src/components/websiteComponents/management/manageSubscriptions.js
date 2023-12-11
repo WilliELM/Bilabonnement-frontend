@@ -76,6 +76,7 @@ function ManageSubscriptions() {
     return (
         <div>
             <form onSubmit={handleSubmit}>
+                <h2> Create new Subscription </h2>
                 <div className="description">Enter buy date</div>
                 <input type="date" name="buydate" value={newSubscription.buydate} onChange={handleChange} placeholder="Buy Date" />
                 <div className="description">Enter subscription start</div>
