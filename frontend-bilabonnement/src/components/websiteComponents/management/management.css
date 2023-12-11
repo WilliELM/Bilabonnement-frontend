@@ -1,107 +1,108 @@
-.management {
-    font-family: 'Arial', sans-serif;
-    color: #333;
-    background-color: #f4f4f4;
-    padding: 20px;
-}
+/* management.css */
 
-.management h1 {
-    text-align: center;
-    color: #222;
+.management {
+    max-width: 100%;
+    padding: 20px;
 }
 
 .management-nav {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 8px;
+    justify-content: space-evenly; /* Center the items horizontally */
+    margin-bottom: 40px;
 }
 
 .management-nav a {
     text-decoration: none;
-    color: #007bff;
-    padding: 10px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-    flex: 1;
-    text-align: center;
-    margin: 0 5px;
+    color: #333;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin-right: 20px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.management-nav a:first-child {
-    margin-left: 0;
-}
 
-.management-nav a:last-child {
-    margin-right: 0;
-}
 
 .management-nav a:hover {
-    background-color: #e7f1ff;
+    background-color: #333;
+    color: #fff;
 }
 
-.active-link {
-    background-color: #8ecae6;
-    color: white;
+
+h2 {
+    color: #333;
 }
 
-/* Responsive design adjustments */
+.management-description {
+    margin-bottom: 40px;
+    color: #666;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
     .management-nav {
         flex-direction: column;
+        align-items: center;
     }
 
     .management-nav a {
-        margin-bottom: 5px;
+        margin-right: 0;
+        margin-bottom: 10px;
     }
 }
 
+/* subscriptions form */
 
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0;
-}
+/* management.css */
 
 form {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    max-width: 400px;
+    margin: 0 auto;
     padding: 20px;
-    max-width: 500px;
-    margin: auto;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.description {
+    margin-top: 10px;
+    color: #555;
+    font-size: 14px;
 }
 
 input {
     width: 100%;
+    margin-top: 5px;
     padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 4px;
     box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
-button.management {
+button {
     width: 100%;
-    padding: 15px;
-    background-color: #007bff;
-    color: white;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-button.management:hover {
-    background-color: #0056b3;
+button:hover {
+    background-color: #2980b9;
 }
-.description {
-    flex:auto;
-    float: left;
-    font-size: smaller;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    font-weight: bold;
+
+/* management.css */
+
+h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
+

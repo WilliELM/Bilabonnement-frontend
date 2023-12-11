@@ -71,7 +71,9 @@ function ManageCustomers() {
 
     return (
         <div>
+
             <form onSubmit={handleSubmit}>
+                <h2> Create new Customer </h2>
                 <input type="text" name="firstName" value={newCustomer.firstName} onChange={handleChange} placeholder="First Name" />
                 <input type="text" name="lastName" value={newCustomer.lastName} onChange={handleChange} placeholder="Last Name" />
                 <input type="text" name="address" value={newCustomer.address} onChange={handleChange} placeholder="Address" />
