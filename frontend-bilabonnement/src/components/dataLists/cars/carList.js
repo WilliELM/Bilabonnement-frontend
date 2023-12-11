@@ -47,7 +47,7 @@ function CarList() {
     const handleAvailabilityChange = (event) => {
         setFilters({
             ...filters,
-            availability: event.target.unchecked
+            availability: !filters.availability
         });
     };
 
@@ -100,7 +100,7 @@ function CarList() {
             const filterMaxPrice = parseFloat(filters.maxPrice) || Infinity;
             const matchesBrand = filterBrand === '' || car.brand.toLowerCase().includes(filterBrand);
             const matchesPrice = isNaN(filterMaxPrice) || car.price <= filterMaxPrice;
-            const matchesAvailability = !filters.availability || car.carFree;
+            const matchesAvailability = filters.availability || car.carFree;
 
             return matchesBrand && matchesPrice && matchesAvailability && matchesNummerplade;
         });
