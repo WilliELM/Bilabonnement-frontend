@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Bar, Doughnut } from 'react-chartjs-2';
 import 'chart.js/auto';
 import './dashboard.css';
+import Navbar from "../navbar";
 
 function Dashboard() {
     const [cars, setCars] = useState([]);
@@ -65,6 +66,10 @@ function Dashboard() {
     };
 
     return (
+        <div>
+            <header className="App-header">
+                <Navbar />
+            </header>
         <div className="dashboard">
             <div className="kpi">
                 <h3>Total Cars</h3>
@@ -89,6 +94,7 @@ function Dashboard() {
             <div className="chart-container">
                 <Doughnut data={doughnutChartConfig} />
             </div>
+        </div>
         </div>
     );
 }

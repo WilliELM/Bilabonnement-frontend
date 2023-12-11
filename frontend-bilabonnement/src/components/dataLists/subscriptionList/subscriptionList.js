@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./subscriptionList.css";
-import EditSubscriptionModal from "./editSubscriptionList"; // Ensure this path is correct
+import EditSubscriptionModal from "./editSubscriptionList";
+import Navbar from "../../websiteComponents/navbar"; // Ensure this path is correct
 
 const SubscriptionList = () => {
     const [subscriptions, setSubscriptions] = useState([]);
@@ -71,6 +72,10 @@ const SubscriptionList = () => {
     }, [subscriptions, sortConfig]);
 
     return (
+        <div>
+            <header className="App-header">
+                <Navbar />
+            </header>
         <div className="page-container">
             {editingSubscription && (
                 <EditSubscriptionModal
@@ -113,6 +118,7 @@ const SubscriptionList = () => {
                     </tr>
                 ))}
                 </tbody>            </table>
+        </div>
         </div>
     );
 };

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Navbar from "../websiteComponents/navbar";
 
 function CustomerList() {
     const [customers, setCustomers] = useState([]);
@@ -16,6 +17,10 @@ function CustomerList() {
 
     return (
         <div>
+            <header className="App-header">
+                <Navbar />
+            </header>
+        <div>
             {customers.map(customer => (
                 <div className="container" key={customer.id}>
                     <h2>{`${customer.firstName} ${customer.lastName}`}</h2>
@@ -27,6 +32,7 @@ function CustomerList() {
                     <p>CPR: {customer.cpr}</p>
                 </div>
             ))}
+        </div>
         </div>
     );
 }

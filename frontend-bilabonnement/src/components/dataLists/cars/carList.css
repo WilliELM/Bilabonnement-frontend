@@ -60,6 +60,7 @@
 .car-card:hover .dropdown-menu {
     display: block;
 }
+
 .overlay {
     position: fixed;
     top: 0;
@@ -111,9 +112,7 @@
   }
 
 
-
   .close-icon {
-    background-color: #1992c3;
     position: absolute;
     top: 10px;
     right: 10px;
@@ -123,8 +122,6 @@
     border: none;
     padding: 0;
   }
-
-
 
 
   .button-container {
