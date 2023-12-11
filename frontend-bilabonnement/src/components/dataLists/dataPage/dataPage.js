@@ -3,7 +3,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./dataPage.css"
-import Navbar from "../../websiteComponents/navbar";
+import Navbar from "../../websiteComponents/navBar/navbar";
 
 const DataPage = () => {
     let navigate = useNavigate();

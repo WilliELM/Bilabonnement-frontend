@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./damageList.css";
 import EditDamageReportModal from "./editDamagereportList";
-import Navbar from "../../websiteComponents/navbar";
+import Navbar from "../../websiteComponents/navBar/navbar";
 
 const DamageReportList = () => {
     const [damageReports, setDamageReports] = useState([]);

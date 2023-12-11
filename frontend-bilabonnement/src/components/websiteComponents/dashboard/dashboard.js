@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Bar, Doughnut } from 'react-chartjs-2';
 import 'chart.js/auto';
 import './dashboard.css';
-import Navbar from "../navbar";
+import Navbar from "../navBar/navbar";
 
 function Dashboard() {
     const [cars, setCars] = useState([]);
