@@ -12,15 +12,13 @@ import Navbar from "../navBar/navbar";
 
 function Management() {
     const [showDescription, setShowDescription] = useState(false);
-    const navigate = useNavigate();
     const location = useLocation();
 
     const handleNavLinkClick = () => {
-        setShowDescription(true);
+        setShowDescription(false);
     };
 
     useEffect(() => {
-        // Show the description when navigating to "/management"
         if (location.pathname === '/management') {
             setShowDescription(true);
         } else {
