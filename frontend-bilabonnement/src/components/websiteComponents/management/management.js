@@ -7,7 +7,6 @@ import ManageDmgReports from './manageDmgreports'; // Added this import
 import { NavLink } from 'react-router-dom';
 
 import './management.css';
-import Navbar from '../navbar';
 import Navbar from "../navBar/navbar";
 
 
