@@ -1,51 +1,92 @@
-body {
-    font-family: 'Arial', sans-serif;
+/* Root styles */
+:root {
+    --navbar-height: 100px; /* Adjust as per your navbar's height */
+
+}
+.landingPageContainer{
+    margin-top: 20px;
+}
+
+body, html {
+    height: 100%;
     margin: 0;
-    padding: 0;
-    background-color: #f6f6f6;
+    font-family: 'Arial', sans-serif;
 }
 
-.landing-page {
-    text-align: center;
-    margin-top: 50px;
-}
-
-h1 {
-    color: #333;
-    padding: 20px;
-}
-
-.features {
+/* Main layout */
+.dashboard {
     display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
+    flex-direction: row;
+    height: calc(100vh - var(--navbar-height));
+    overflow: hidden; /* Prevents scrolling */
 }
 
-.features a {
-    text-decoration: none;
-    color: #444;
-    font-size: 16px;
-    padding: 10px 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-    transition: background-color 0.3s ease;
+/* Navbar styles */
+.navbar {
+    height: var(--navbar-height);
+    /* Other navbar styles remain the same */
 }
 
-.features a:hover {
-    background-color: #e0e0e0;
+/* Alarms sidebar styles */
+.alarms-sidebar {
+    padding-top: 10px;
+    width: 20%;
+    height: 100%;
+    overflow-y: auto; /* Allows scrolling within the sidebar */
+    /* Other styles remain the same */
 }
 
-.cards {
-    height: 180px;
-    width: 200px;
+/* KPI and charts section */
+.kpi-section {
+    width: 70%;
+    height: 100%;
+    overflow-y: auto; /* Allows scrolling within the kpi-section */
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    /* Remove any other styles that conflict with these */
 }
 
-a {
-    font-weight: bold;
+/* KPI card styles */
+.kpi-card {
+    width: calc(20% - 40px); /* Three cards per row */
+    margin: 10px;
+    /* Other KPI card styles remain the same */
 }
 
-.explanation {
-    padding: 10px;
+/* Chart container styles */
+.chart-container {
+    flex: 1 1 100%; /* Take full width of the container */
+    height: 350px; /* Fixed height for charts */
+    padding: 1rem;
+    /* Other styles remain the same */
 }
 
+/* Chart canvas adjustments */
+.chart-container canvas {
+    width: 100% !important;
+    height: 100% !important; /* This will make the chart fill the container */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .alarms-sidebar,
+    .kpi-section {
+        width: 100%;
+        height: auto; /* Adjusts height for smaller screens */
+    }
+
+    .kpi-card {
+        width: 100%; /* Full width on smaller screens */
+    }
+
+    .chart-container {
+        height: 300px; /* Smaller height for charts on smaller screens */
+    }
+}

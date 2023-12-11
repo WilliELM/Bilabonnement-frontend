@@ -17,9 +17,7 @@ function Navbar() {
                 <li className='navbar-item'>
                     <Link to="/management" className="navbar-link">Management</Link>
                 </li>
-                <li className='navbar-item'>
-                    <Link to="/KPI" className="navbar-link">KPI'er</Link>
-                </li>
+
             </ul>
         </nav>
     );
