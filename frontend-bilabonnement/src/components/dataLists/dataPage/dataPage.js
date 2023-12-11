@@ -14,7 +14,7 @@ const DataPage = () => {
 
     return (
         <div className="app">
-            <header className="App-header">
+            <header className="Dashboard">
                 <Navbar />
             </header>
         <div className="data-page-container">

@@ -1,0 +1,12 @@
+.alarm {
+    background: #fff;
+    border-right: 5px solid #ccc; /* Non-critical alarm */
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.alarm-critical {
+    border-right-color: #f44336; /* Red for critical alarms */
+}
+

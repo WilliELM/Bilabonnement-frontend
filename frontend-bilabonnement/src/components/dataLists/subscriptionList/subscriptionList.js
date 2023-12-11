@@ -73,7 +73,7 @@ const SubscriptionList = () => {
 
     return (
         <div>
-            <header className="App-header">
+            <header className="Dashboard">
                 <Navbar />
             </header>
         <div className="page-container">

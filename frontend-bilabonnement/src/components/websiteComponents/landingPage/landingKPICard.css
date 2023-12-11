@@ -1,0 +1,56 @@
+.kpi-card {
+    background-color: #ffffff; /* You can adjust the color or add a gradient */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    display: inline-block;
+    width: 250px; /* Adjust the width as needed */
+    text-align: center;
+}
+.alarms{
+    width: 30%;
+}
+
+.kpi-section{
+    width: 40%;
+}
+.kpi-title {
+    color: #555;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.kpi-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.kpi-change {
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.kpi-icon {
+    display: block;
+    margin: 0 auto 10px;
+    height: 40px; /* Adjust based on your icon size */
+    width: 40px; /* Adjust based on your icon size */
+}
+
+/* Optional: Style for the increase/decrease percentage */
+.kpi-increase {
+    color: #4caf50; /* Green for increase */
+}
+
+.kpi-decrease {
+    color: #f44336; /* Red for decrease */
+}
+
+/* Make sure to wrap your KPI cards in a container that centers them */
+.kpi-container {
+    text-align: center;
+}

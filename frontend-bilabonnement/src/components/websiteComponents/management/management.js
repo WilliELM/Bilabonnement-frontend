@@ -13,7 +13,7 @@ import Navbar from "../navBar/navbar";
 function Management() {
     return (
         <div>
-            <header className="App-header">
+            <header className="Dashboard">
                 <Navbar />
             </header>
             <div className="management">

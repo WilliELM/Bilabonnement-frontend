@@ -45,7 +45,7 @@ function CustomerTable() {
 
     return (
         <div className="App">
-            <header className="App-header">
+            <header className="Dashboard">
                 <Navbar />
             </header>
         <div className="page-container">

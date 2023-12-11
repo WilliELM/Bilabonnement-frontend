@@ -107,7 +107,7 @@ function CarList() {
     };
     return (
         <div>
-            <header className="App-header">
+            <header className="Dashboard">
                 <Navbar />
             </header>
 
