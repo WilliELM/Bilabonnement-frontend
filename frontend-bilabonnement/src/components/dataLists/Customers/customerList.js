@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import EditCustomerModal from "./editCustomer"; // Ensure this path is correct
-import "./customerList.css"; // Create a new CSS file for customerList
+import "./customerList.css";
+import Navbar from "../../websiteComponents/navbar"; // Create a new CSS file for customerList
 
 function CustomerTable() {
     const [customers, setCustomers] = useState([]);
@@ -43,6 +44,10 @@ function CustomerTable() {
     };
 
     return (
+        <div className="App">
+            <header className="App-header">
+                <Navbar />
+            </header>
         <div className="page-container">
             {editingCustomer && (
                 <EditCustomerModal
@@ -86,6 +91,7 @@ function CustomerTable() {
                     ))}
                 </tbody>
             </table>
+        </div>
         </div>
     );
 }

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./damageList.css";
 import EditDamageReportModal from "./editDamagereportList";
+import Navbar from "../../websiteComponents/navbar";
 
 const DamageReportList = () => {
     const [damageReports, setDamageReports] = useState([]);
@@ -44,6 +45,10 @@ const DamageReportList = () => {
             });    };
 
     return (
+        <div className="App">
+            <header className="App-header">
+                <Navbar />
+            </header>
         <div className="page-container">
             {editingDamageReport && (
                 <EditDamageReportModal
@@ -79,6 +84,7 @@ const DamageReportList = () => {
                 ))}
                 </tbody>
             </table>
+        </div>
         </div>
     );
 };

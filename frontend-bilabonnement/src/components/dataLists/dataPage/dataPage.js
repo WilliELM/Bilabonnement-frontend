@@ -3,6 +3,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./dataPage.css"
+import Navbar from "../../websiteComponents/navbar";
 
 const DataPage = () => {
     let navigate = useNavigate();
@@ -12,6 +13,10 @@ const DataPage = () => {
     };
 
     return (
+        <div className="app">
+            <header className="App-header">
+                <Navbar />
+            </header>
         <div className="data-page-container">
             <div className="card customers" onClick={() => navigateTo('/customers')}>
                 <div className="card-title">Customers</div>
@@ -25,6 +30,7 @@ const DataPage = () => {
             <div className="card damagereports" onClick={() => navigateTo('/damagereports')}>
                 <div className="card-title">Damage Reports</div>
             </div>
+        </div>
         </div>
     );
 };
