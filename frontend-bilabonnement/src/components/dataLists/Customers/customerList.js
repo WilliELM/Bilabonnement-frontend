@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import EditCustomerModal from "./editCustomer"; // Ensure this path is correct
 import "./customerList.css";
-import Navbar from "../../websiteComponents/navbar"; // Create a new CSS file for customerList
+import Navbar from "../../websiteComponents/navBar/navbar"; // Create a new CSS file for customerList
 
 function CustomerTable() {
     const [customers, setCustomers] = useState([]);

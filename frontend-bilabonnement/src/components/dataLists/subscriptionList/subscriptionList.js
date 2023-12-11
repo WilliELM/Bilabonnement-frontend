@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./subscriptionList.css";
 import EditSubscriptionModal from "./editSubscriptionList";
-import Navbar from "../../websiteComponents/navbar"; // Ensure this path is correct
+import Navbar from "../../websiteComponents/navBar/navbar"; // Ensure this path is correct
 
 const SubscriptionList = () => {
     const [subscriptions, setSubscriptions] = useState([]);
