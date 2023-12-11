@@ -7,26 +7,21 @@
 
 .management-nav {
     display: flex;
-    justify-content: space-evenly; /* Center the items horizontally */
+    justify-content: space-evenly;
     margin-bottom: 40px;
 }
 
 .management-nav a {
     text-decoration: none;
-    color: #333;
+    color: #1992c3;
     font-size: 16px;
     padding: 10px 20px;
     margin-right: 20px;
-    border: 2px solid #333;
+    border: 2px solid #1992c3;
     border-radius: 5px;
+    background:white;
     transition: background-color 0.3s ease, color 0.3s ease;
-}
 
-
-
-.management-nav a:hover {
-    background-color: #333;
-    color: #fff;
 }
 
 
