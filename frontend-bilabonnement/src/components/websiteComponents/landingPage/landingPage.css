@@ -18,7 +18,6 @@ body, html {
 .dashboard {
     display: flex;
     flex-direction: row;
-    height: calc(100vh - var(--navbar-height));
     overflow: hidden; /* Prevents scrolling */
 }
 

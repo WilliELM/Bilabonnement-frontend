@@ -38,16 +38,17 @@ body {
 .navbar-link {
   text-decoration: none;
   color: #444;
-  font-size: 0.9em;
+  font-size: 0.95em;
   padding: 5px 10px;
   transition: color 0.3s ease;
 }
 
 .navbar-link:hover {
-  color: #fff;
-  background: #8ecae6;
+  border-style: solid;
   border-radius: 4px;
-  text-decoration: none;
+  border-color:#1992c3;
+  background: #1992c3;
+  color: white;
 }
 
 .navbar-link {
