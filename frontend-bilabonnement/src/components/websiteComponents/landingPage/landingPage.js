@@ -60,9 +60,7 @@ function LandingPage() {
 
     ];
 
-
-
-
+    
     const totalRevenue = subscriptions.reduce((acc, sub) => acc + sub.subcost, 0);
     const totalCustomers = new Set(subscriptions.map(sub => sub.customer.id)).size;
     const totalCarValue = cars.reduce((acc, car) => acc + car.price, 0);
@@ -119,11 +117,11 @@ function LandingPage() {
                 ))}
             </div>
             <div className="kpi-section">
-                <KpiCard title="Total Revenue" value={`DKK ${totalRevenue.toFixed(2)}`} />
-                <KpiCard title="ARPU " description={"(average revenue per unit)"} value={` ${arpu.toFixed(2)}`} />
+                <KpiCard title="Total Revenue" value={` ${totalRevenue.toFixed(2)},-`} />
+                <KpiCard title="ARPU " description={"(average revenue per unit)"} value={` ${arpu.toFixed(2)},-`} />
                 <KpiCard title="Average Subscription Length" value={`${averageSubscriptionLength.toFixed(2)} months`} />
-                <KpiCard title="Total Damage Costs" value={`DKK ${totalDamageCost.toFixed(2)}`} />
-                <KpiCard title="Total Car Value" value={`DKK ${totalCarValue.toFixed(2)}`} />
+                <KpiCard title="Total Damage Costs" value={`${totalDamageCost.toFixed(2)},-`} />
+                <KpiCard title="Total Car Value" value={` ${totalCarValue.toFixed(2)},-`} />
                 <KpiCard title="Total Available Cars" value={` ${totalAvailableCars}`} />
                 {/* Add more KpiCard components as needed */}
             </div>

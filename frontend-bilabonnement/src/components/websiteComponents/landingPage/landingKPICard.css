@@ -1,6 +1,7 @@
 .kpi-card {
     background-color: #ffffff; /* You can adjust the color or add a gradient */
     border-radius: 10px;
+    border-color: #1992c3;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 10px;
@@ -16,21 +17,27 @@
     width: 40%;
 }
 .kpi-title {
-    color: #555;
-    font-size: 1.8rem;
-    margin-bottom: 5px;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
 }
 
 .kpi-value {
-    font-size: 1.8rem;
+    font-size: 20px;
     font-weight: bold;
+    color: #3498db; /* Primary color */
+}
+
+.kpi-description {
+    font-size: 14px;
     color: #333;
-    margin-bottom: 5px;
+    margin-top: 10px;
 }
 
 .kpi-change {
     font-size: 1rem;
-    color: #888;
+    color: #333;
     margin-bottom: 10px;
 }
 
