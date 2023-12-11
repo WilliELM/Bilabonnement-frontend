@@ -1,10 +1,8 @@
-// ManageSubscriptions.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import "./management.css"
 
 function ManageSubscriptions() {
-    const [subscriptions, setSubscriptions] = useState([]); // State to store existing subscriptions
+    const [subscriptions, setSubscriptions] = useState([]);
     const [newSubscription, setNewSubscription] = useState({
         buydate: '',
         substart: '',
@@ -13,13 +11,18 @@ function ManageSubscriptions() {
         kmdone: 0,
         kmplanned: 0,
         subtime: 0,
-        carId: '', 
-        customerId: '', 
-        damageReportId: '', 
+        car: null, // Change to an object
+        customer: null, // Change to an object
     });
+    const [cars, setCars] = useState([]);
+    const [customers, setCustomers] = useState([]);
+    const [selectedCar, setSelectedCar] = useState(null); // Change to an object
+    const [selectedCustomer, setSelectedCustomer] = useState(null); // Change to an object
 
     useEffect(() => {
         fetchSubscriptions();
+        fetchCars();
+        fetchCustomers();
     }, []);
 
     const fetchSubscriptions = () => {
@@ -32,45 +35,69 @@ function ManageSubscriptions() {
             });
     };
 
+    const fetchCars = () => {
+        axios.get('https://bilabonnementapi.azurewebsites.net/cars')
+            .then(response => {
+                setCars(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching cars', error);
+            });
+    };
+
+    const fetchCustomers = () => {
+        axios.get('https://bilabonnementapi.azurewebsites.net/customers')
+            .then(response => {
+                setCustomers(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching customers', error);
+            });
+    };
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setNewSubscription({
             ...newSubscription,
-            [name]: name.includes('km') || name === 'subtime' ? parseInt(value, 10) : value
+            [name]: value,
         });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('https://bilabonnementapi.azurewebsites.net/subscriptions', newSubscription)
-            .then(response => {
-                setNewSubscription({
-                    buydate: '',
-                    substart: '',
-                    subend: '',
-                    kmstart: 0,
-                    kmdone: 0,
-                    kmplanned: 0,
-                    subtime: 0,
-                    carId: '',
-                    customerId: '',
-                    damageReportId: '',
-                });
-                fetchSubscriptions();
-            })
-            .catch(error => {
-                console.error('Error adding new subscription', error);
-            });
-    };
 
-    const handleDelete = (subscriptionId) => {
-        axios.delete(`https://bilabonnementapi.azurewebsites.net/subscriptions/${subscriptionId}`)
-            .then(response => {
-                fetchSubscriptions();
-            })
-            .catch(error => {
-                console.error('Error deleting subscription', error);
-            });
+        if (selectedCar !== null && selectedCustomer !== null) {
+            const updatedSubscription = {
+                ...newSubscription,
+                car: selectedCar,
+                customer: selectedCustomer,
+            };
+
+            console.log('Submitting Subscription:', updatedSubscription);
+
+            axios.post('https://bilabonnementapi.azurewebsites.net/subscriptions', updatedSubscription)
+                .then(response => {
+                    setNewSubscription({
+                        buydate: '',
+                        substart: '',
+                        subend: '',
+                        kmstart: 0,
+                        kmdone: 0,
+                        kmplanned: 0,
+                        subtime: 0,
+                        car: null,
+                        customer: null,
+                    });
+                    setSelectedCar(null); // Reset selectedCar
+                    setSelectedCustomer(null); // Reset selectedCustomer
+                    fetchSubscriptions();
+                })
+                .catch(error => {
+                    console.error('Error adding new subscription', error);
+                });
+        } else {
+            console.error('Car or Customer not selected');
+        }
     };
 
     return (
@@ -92,15 +119,31 @@ function ManageSubscriptions() {
                 <div className="description">Enter Subscription time (months)</div>
                 <input type="number" name="subtime" value={newSubscription.subtime} onChange={handleChange} placeholder="Subscription Time" />
 
+                {/* Car and Customer dropdown selection */}
+                <div className="description">Select Car</div>
+                <select name="car" onChange={(e) => setSelectedCar(cars.find(car => car.id === parseInt(e.target.value, 10)))} value={selectedCar ? String(selectedCar.id) : ''}>
+                    <option value="" disabled>Select Car</option>
+                    {cars.map(car => (
+                        <option key={car.id} value={String(car.id)}>
+                            {`${car.brand} ${car.model} - ${car.id}`}
+                        </option>
+                    ))}
+                </select>
 
-                {/* Placeholder inputs for car, customer, and damage report selection */}
-                <input type="text" name="carId" value={newSubscription.carId} onChange={handleChange} placeholder="Car ID" />
-                <input type="text" name="customerId" value={newSubscription.customerId} onChange={handleChange} placeholder="Customer ID" />
-                <input type="text" name="damageReportId" value={newSubscription.damageReportId} onChange={handleChange} placeholder="Damage Report ID" />
-                <button className="Button-update" type="submit">Create Subscription</button>
+                <div className="description">Select Customer</div>
+                <select name="customer" onChange={(e) => setSelectedCustomer(customers.find(customer => customer.id === parseInt(e.target.value, 10)))} value={selectedCustomer ? String(selectedCustomer.id) : ''}>
+                    <option value="" disabled>Select Customer</option>
+                    {customers.map(customer => (
+                        <option key={customer.id} value={String(customer.id)}>
+                            {`${customer.firstName} ${customer.lastName} - ${customer.id}`}
+                        </option>
+                    ))}
+                </select>
+
+                <button className="Button-update" type="submit">
+                    Create Subscription
+                </button>
             </form>
-
-
         </div>
     );
 }
