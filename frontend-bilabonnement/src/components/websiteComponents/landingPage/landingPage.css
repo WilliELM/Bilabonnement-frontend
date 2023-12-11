@@ -8,6 +8,7 @@
 }
 
 body, html {
+
     height: 100%;
     margin: 0;
     font-family: 'Arial', sans-serif;
@@ -38,12 +39,14 @@ body, html {
 
 /* KPI and charts section */
 .kpi-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Three KPI cards per row */
+    gap: 1px;
     width: 70%;
     height: 100%;
     overflow-y: auto; /* Allows scrolling within the kpi-section */
     padding-left: 20px;
     padding-right: 20px;
-    display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
     /* Remove any other styles that conflict with these */
