@@ -1,4 +1,3 @@
-import './App.css';
 import CarList from "./components/dataLists/cars/carList";
 import SubscriptionList from "./components/dataLists/subscriptionList/subscriptionList";
 import CustomerList from "./components/dataLists/Customers/customerList";
