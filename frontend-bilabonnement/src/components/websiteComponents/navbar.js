@@ -38,6 +38,9 @@ function Navbar() {
                 <li className='navbar-item' onClick={toggleSubscriptionsDropdown}>
                     <Link to="/subscriptions"> <span className="navbar-link breeds-dropdown">Abonnementer</span> </Link>
                 </li>
+                <li className='navbar-item' onClick={toggleSubscriptionsDropdown}>
+                    <Link to="/damagereports"> <span className="navbar-link breeds-dropdown">Damagereports</span> </Link>
+                </li>
                 <li className='navbar-item'>
                     <Link to="/management" className="navbar-link">Management</Link>
                 </li>
