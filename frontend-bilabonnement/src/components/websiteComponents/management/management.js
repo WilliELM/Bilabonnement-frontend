@@ -6,7 +6,7 @@ import ManageSubscriptions from './manageSubscriptions';
 import { NavLink } from 'react-router-dom';
 
 import './management.css';
-import Navbar from "../navbar";
+import Navbar from "../navBar/navbar";
 
 function Management() {
     return (

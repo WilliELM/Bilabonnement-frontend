@@ -5,7 +5,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import { ReactComponent as CogwheelIcon } from './cogwheel-icon.svg'; // Import a cogwheel icon
 
 import './carList.css';
-import Navbar from "../../websiteComponents/navbar";
+import Navbar from "../../websiteComponents/navBar/navbar";
 
 function CarList() {
     const [cars, setCars] = useState([]);

@@ -2,7 +2,7 @@ import './App.css';
 import CarList from "./components/dataLists/cars/carList";
 import SubscriptionList from "./components/dataLists/subscriptionList/subscriptionList";
 import CustomerList from "./components/dataLists/Customers/customerList";
-import Navbar from "./components/websiteComponents/navbar";
+import Navbar from "./components/websiteComponents/navBar/navbar";
 import Dashboard from './components/websiteComponents/dashboard/dashboard'; // Import the Dashboard component
 import Management from "./components/websiteComponents/management/management";
 import DamageList from "./components/dataLists/damagereportsList/damageList";
