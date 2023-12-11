@@ -1,114 +1,47 @@
-/* Basic reset for styling */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-/* Styling for the page content */
-.page-container {
-    display: flex;
-    justify-content: center;
-    align-items: center; /* This line is optional, only needed if you also want to vertically center the table */
-}
-
-
-/* Table styles */
+/* Reset some default styles for better consistency */
 table {
-    width: 100%;
     border-collapse: collapse;
-}
-
-thead {
-    background-color: #333;
-    color: #fff;
+    width: 90%;
 }
 
 th, td {
-    border-bottom: 1px solid #ccc; /* Horizontal lines between rows */
-    border-right: 1px solid #ccc; /* Vertical lines between columns */
+    padding: 15px;
     text-align: left;
-    padding: 8px;
-    overflow: hidden; /* Prevents content from making the cell larger */
-    text-overflow: ellipsis; /* Adds an ellipsis to overflowing content */
-    white-space: nowrap; /* Keeps the content on a single line */
-}
-th:last-child, td:last-child {
-    border-right: none;
-}
-/* Striped rows */
-tbody tr:nth-child(odd) {
-    background-color: #f9f9f9;
+    border-bottom: 1px solid #ddd;
 }
 
-/* Hover effect on rows */
-tbody tr:hover {
-    background-color: #f1f1f1;
-}
-th {
-    width: 12.5%; /* Adjust the percentage based on how many columns you have */
+/* Style the header row */
+thead {
+    background-color: #3498db; /* Blue color */
+    color: white;
 }
 
-/* Style for buttons */
+/* Style alternating rows for better readability */
+tbody tr:nth-child(even) {
+    background-color: #ecf0f1; /* Light blue-gray color */
+}
+
+/* Style the buttons in the last column */
 .edit-btn, .delete-btn {
-    padding: 8px 15px;
-    margin-right: 5px;
-    border: none;
-    border-radius: 4px;
+    padding: 10px 15px;
+    margin-right: 8px;
     cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s;
 }
 
 .edit-btn {
-    background-color: #1992c3;
-    color: white;
+    background-color: #2ecc71; /* Green color */
 }
 
 .delete-btn {
-    background-color: #F44336;
-    color: white;
+    background-color: #e74c3c; /* Red color */
 }
 
-.edit-btn:hover {
-    color: #1992c3;
-    background-color: white;
-    border-radius: 4px;
-    border-color:#1992c3;}
-
-.delete-btn:hover {
-    background-color: white;
-    color: #f44336;
-    border-radius: 4px;
-    border-color: #f44336;}
-
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent overlay */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Make sure the overlay is above everything else */
+/* Hover effect on buttons */
+.edit-btn:hover, .delete-btn:hover {
+    background-color: #34495e; /* Darker shade for hover effect */
 }
-
-.modal-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    position: relative;
-    z-index: 1001; /* Above the overlay */
-    max-width: 500px; /* Set to the max width you want */
-}
-
-.close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: large;
-    cursor: pointer;
-}
-/* Add more styles if you need */
