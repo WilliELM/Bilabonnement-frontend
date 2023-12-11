@@ -18,10 +18,10 @@ function Management() {
             </header>
             <div className="management">
                 <nav className="management-nav">
-                    <NavLink to="cars" className={({ isActive }) => isActive ? 'active-link' : ''}>Manage Cars</NavLink>
-                    <NavLink to="customers" className={({ isActive }) => isActive ? 'active-link' : ''}>Manage Customers</NavLink>
-                    <NavLink to="subscriptions" className={({ isActive }) => isActive ? 'active-link' : ''}>Manage Subscriptions</NavLink>
-                    <NavLink to="dmgreports" className={({ isActive }) => isActive ? 'active-link' : ''}>Manage Damage Reports</NavLink>
+                    <NavLink to="cars" className={({ isActive }) => isActive ? 'active-link' : ''}>Create Cars</NavLink>
+                    <NavLink to="customers" className={({ isActive }) => isActive ? 'active-link' : ''}>Create Customers</NavLink>
+                    <NavLink to="subscriptions" className={({ isActive }) => isActive ? 'active-link' : ''}>Create Subscriptions</NavLink>
+                    <NavLink to="dmgreports" className={({ isActive }) => isActive ? 'active-link' : ''}>Create Damage Reports</NavLink>
                 </nav>
                 <h2>Management</h2>
                 <div>Press one of the above buttons to create new cars, customers, subscriptions, or damage reports</div>

@@ -13,9 +13,9 @@ function ManageSubscriptions() {
         kmdone: 0,
         kmplanned: 0,
         subtime: 0,
-        carId: '', // Placeholder for car selection
-        customerId: '', // Placeholder for customer selection
-        damageReportId: '', // Placeholder for damage report selection
+        carId: '', 
+        customerId: '', 
+        damageReportId: '', 
     });
 
     useEffect(() => {
@@ -96,7 +96,7 @@ function ManageSubscriptions() {
                 <input type="text" name="carId" value={newSubscription.carId} onChange={handleChange} placeholder="Car ID" />
                 <input type="text" name="customerId" value={newSubscription.customerId} onChange={handleChange} placeholder="Customer ID" />
                 <input type="text" name="damageReportId" value={newSubscription.damageReportId} onChange={handleChange} placeholder="Damage Report ID" />
-                <button type="submit">Add Subscription</button>
+                <button type="submit">Create Subscription</button>
             </form>
 
 
