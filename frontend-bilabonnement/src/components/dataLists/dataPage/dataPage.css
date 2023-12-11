@@ -1,0 +1,65 @@
+/* DataPage.css */
+
+.data-page-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 20px; /* Space between cards */
+    padding: 20px; /* Padding around the container */
+    justify-items: center; /* Center cards horizontally */
+    align-items: center; /* Center cards vertically */
+}
+
+.card {
+    background-size: cover;
+    background-position: center;
+    color: white;
+    width: 300px; /* Width of the cards */
+    height: 200px; /* Height of the cards */
+    display: flex;
+    justify-content: center; /* Center text horizontally */
+    align-items: center; /* Center text vertically */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Card shadow */
+    transition: transform 0.2s; /* Smooth scaling effect */
+    cursor: pointer;
+    position: relative; /* Positioning context for the title */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Slightly scale up on hover */
+}
+
+.card:before {
+    content: ''; /* Before pseudo-element for the dark overlay */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    border-radius: 10px; /* Rounded corners */
+}
+
+.card-title {
+    position: relative; /* Position above the :before pseudo-element */
+    z-index: 1; /* Ensure the title is above the overlay */
+    font-size: 24px; /* Title font size */
+    text-align: center;
+}
+
+/* Add your images as background-images for each card */
+.card.customers {
+    background-image: url('https://static.thenounproject.com/png/186492-200.png');
+}
+
+.card.cars {
+    background-image: url('https://png.pngtree.com/png-clipart/20201229/ourmid/pngtree-vintage-car-lineart-car-black-and-white-clipart-png-image_2668972.jpg');
+}
+
+.card.subscriptions {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/4730/4730393.png');
+}
+
+.card.damagereports {
+    background-image: url('https://media.istockphoto.com/id/1208291832/vector/document-error-icon-in-flat-style-broken-report-vector-illustration-on-white-isolated.jpg?s=1024x1024&w=is&k=20&c=ywq3-c9fODzA_-P8m_PdxEnfsd9oZ4nXcH0tIUR7OkI=');
+}
