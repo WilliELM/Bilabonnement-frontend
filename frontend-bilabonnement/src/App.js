@@ -5,6 +5,7 @@ import CustomerList from "./components/dataLists/Customers/customerList";
 import Navbar from "./components/websiteComponents/navbar";
 import Dashboard from './components/websiteComponents/dashboard/dashboard'; // Import the Dashboard component
 import Management from "./components/websiteComponents/management/management";
+import DamageList from "./components/dataLists/damagereportsList/damageList";
 
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 
@@ -22,6 +23,7 @@ function App() {
                         <Route path="/customers" element={<CustomerList />} />
                         <Route path="/subscriptions" element={<SubscriptionList />} />
                         <Route path="/management/*" element={<Management />} />
+                        <Route path="/damagereports" element={<DamageList/>}/>
 
                     </Routes>
                 </div>
