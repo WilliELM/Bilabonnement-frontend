@@ -1,0 +1,50 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f6f6f6;
+}
+
+.landing-page {
+    text-align: center;
+    margin-top: 50px;
+}
+
+h1 {
+    color: #333;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.features a {
+    text-decoration: none;
+    color: #444;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.features a:hover {
+    background-color: #e0e0e0;
+}
+
+.cards {
+    height: 180px;
+    width: 200px;
+}
+
+a {
+    font-weight: bold;
+}
+
+.explanation {
+    padding: 20px;
+}
+

@@ -6,10 +6,14 @@ import ManageSubscriptions from './manageSubscriptions';
 import { NavLink } from 'react-router-dom';
 
 import './management.css';
+import Navbar from "../navbar";
 
 function Management() {
     return (
-
+        <div>
+            <header className="App-header">
+                <Navbar />
+            </header>
         <div className="management">
             <nav className="management-nav">
                 <NavLink to="cars" className={({ isActive }) => isActive ? 'active-link' : ''}>Manage Cars</NavLink>
@@ -23,6 +27,7 @@ function Management() {
                 <Route path="customers" element={<ManageCustomers />} />
                 <Route path="subscriptions" element={<ManageSubscriptions />} />
             </Routes>
+        </div>
         </div>
 
     );
