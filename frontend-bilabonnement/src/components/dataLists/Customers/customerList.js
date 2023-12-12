@@ -48,6 +48,7 @@ function CustomerTable() {
             <header className="Dashboard">
                 <Navbar />
             </header>
+            <h2> Kunde tabel </h2>
             <div className="page-container">
                 {editingCustomer && (
                     <EditCustomerModal
@@ -56,6 +57,8 @@ function CustomerTable() {
                         onSave={handleUpdate}
                     />
                 )}
+
+
                 <div className="table-air">
                     <table>
                         <thead>

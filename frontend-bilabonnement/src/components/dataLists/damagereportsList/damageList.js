@@ -55,6 +55,7 @@ const DamageReportList = () => {
                         onSave={handleUpdate}
                     />
                 )}
+                <h2> Skades rapport tabel </h2>
                 <div className="table-air">
                     <table>
                         <thead>

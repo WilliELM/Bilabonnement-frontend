@@ -70,10 +70,11 @@ const SubscriptionList = () => {
     }, [subscriptions, sortConfig]);
 
     return (
-        <div>
+        <div className="App">
             <header className="Dashboard">
                 <Navbar />
             </header>
+                <h2> Abonnements tabel </h2>
                 <div className="page-container">
                     {editingSubscription && (
                         <EditSubscriptionModal
@@ -94,6 +95,7 @@ const SubscriptionList = () => {
                                 <th onClick={() => handleSort('kmdone')}>Kørte kilometer</th>
                                 <th onClick={() => handleSort('kmplanned')}>Planlagte kilometer</th>
                                 <th onClick={() => handleSort('subtime')}>Abonnementstid</th>
+                                <th onClick={() => handleSort('subcost')}>Abonnemtspris</th>
                                 <th onClick={() => handleSort('customer.id')}>Kunde-ID</th>
                                 <th onClick={() => handleSort('car.id')}>Bil-ID</th>
                                 <th>Handlinger</th>
@@ -109,7 +111,8 @@ const SubscriptionList = () => {
                                 <td>{subscription.kmstart}</td>
                                 <td>{subscription.kmdone}</td>
                                 <td>{subscription.kmplanned}</td>
-                                <td>{subscription.subtime} months</td>
+                                <td>{subscription.subtime} måneder</td>
+                                <td> {subscription.subcost} </td>
                                 <td>{subscription.customer ? subscription.customer.id : 'N/A'}</td>
                                 <td>{subscription.car ? subscription.car.id : 'N/A'}</td>
                                 <td>
