@@ -100,6 +100,9 @@ function ManageSubscriptions() {
         }
     };
 
+    //TEST AF FILTER
+    
+
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -121,21 +124,29 @@ function ManageSubscriptions() {
 
                 {/* Car and Customer dropdown selection */}
                 <div className="description">Select Car</div>
-                <select name="car" onChange={(e) => setSelectedCar(cars.find(car => car.id === parseInt(e.target.value, 10)))} value={selectedCar ? String(selectedCar.id) : ''}>
+                <select
+                    name="car"
+                    onChange={(e) => {
+                        const selectedCar = cars.find(car => car.id === parseInt(e.target.value, 10));
+                        setSelectedCar(selectedCar);
+                    }}
+                    value={selectedCar ? String(selectedCar.id) : ''}
+                >
                     <option value="" disabled>Select Car</option>
-                    {cars.map(car => (
+                    {cars.filter(car => car.carFree).map(car => (
                         <option key={car.id} value={String(car.id)}>
-                            {`${car.brand} ${car.model} - ${car.id}`}
+                            {`${car.brand} ${car.model} - ID: ${car.id}`}
                         </option>
                     ))}
                 </select>
+
 
                 <div className="description">Select Customer</div>
                 <select name="customer" onChange={(e) => setSelectedCustomer(customers.find(customer => customer.id === parseInt(e.target.value, 10)))} value={selectedCustomer ? String(selectedCustomer.id) : ''}>
                     <option value="" disabled>Select Customer</option>
                     {customers.map(customer => (
                         <option key={customer.id} value={String(customer.id)}>
-                            {`${customer.firstName} ${customer.lastName} - ${customer.id}`}
+                            {`${customer.firstName} ${customer.lastName} - ID: ${customer.id}`}
                         </option>
                     ))}
                 </select>
