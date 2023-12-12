@@ -33,7 +33,6 @@ function LandingPage() {
 
 
     useEffect(() => {
-        // Replace with your actual API endpoint URLs
         axios.get('https://bilabonnementapi.azurewebsites.net/cars')
             .then(response => setCars(response.data));
         axios.get('https://bilabonnementapi.azurewebsites.net/customers')
@@ -45,37 +44,27 @@ function LandingPage() {
 
     }, []);
 
-    //Values til alarmer
-
-    const alarmvalues = [
-
-    ]
-    // Tilføjelse af alarmer på startside
     const alarms = [
-        { title: 'Revenue Alert', message: 'Revenue is below the set threshold.', isCritical: true },
-        { title: 'ARPU Alert', message: 'ARPU is lower than last month.', isCritical: false },
-        { title: 'Damage costs Alert ', message: 'Damage costs are higher than expected', isCritical: true },
-        { title: 'Car value Alert ', message: 'Total car value is lower than expected', isCritical: true },
-        { title: 'Car stock Alert ', message: 'Few cars in stock', isCritical: true }
+        { title: 'Indtægtsadvarsel', message: 'Indtægter er under den fastsatte grænse', isCritical: true },
+        { title: 'ARPU-advarsel (Gennemsnitlig Indtægt Pr. Bruger)', message: ' ARPU er lavere end sidste måned', isCritical: false },
+        { title: 'Skadeomkostningsadvarsel ', message: 'Skadeomkostninger er højere end forventet', isCritical: true },
+        { title: 'Bilværdiadvarsel ', message: 'Samlet bilværdi er lavere end forventet', isCritical: true },
+        { title: 'Bilbeholdningsadvarsel ', message: 'Få biler på lager', isCritical: true }
 
     ];
 
-    
     const totalRevenue = subscriptions.reduce((acc, sub) => acc + sub.subcost, 0);
-    const totalCustomers = new Set(subscriptions.map(sub => sub.customer.id)).size;
     const totalCarValue = cars.reduce((acc, car) => acc + car.price, 0);
     const totalAvailableCars = cars.length - subscriptions.length;
     const totalDamageCost = damageReports.reduce((acc, report) => acc + report.repairCost + report.cleaningCost, 0);
     const averageSubscriptionLength = calculateAverageSubscriptionLength(subscriptions);
     const arpu = calculateARPU(subscriptions,customers)
 
-
-    // Bar chart data
     const barChartData = {
-        labels: ['Total Revenue', 'Total Damage Costs'],
+        labels: ['Samlet Indtægt', 'Samlede Skadeomkostninger'],
         datasets: [
             {
-                label: 'Financial Overview',
+                label: 'Økonomisk Overblik',
                 data: [totalRevenue, totalDamageCost],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -92,12 +81,11 @@ function LandingPage() {
         ]
     };
 
-    // Mock data for charts
     const barChartConfig = {
         labels: cars.map(car => car.brand),
         datasets: [
             {
-                label: 'Price for Rented Out Cars',
+                label: 'Pris for udlejede biler',
                 data: cars.map(car => car.price),
                 backgroundColor: 'rgba(53, 162, 235, 0.5)',
             },
@@ -109,35 +97,32 @@ function LandingPage() {
             <header>
                 <Navbar/>
             </header>
-<div className="landingPageContainer">
-        <div className="dashboard">
-            <div className="alarms-sidebar">
-                {alarms.map((alarm, index) => (
-                    <Alarm key={index} title={alarm.title} message={alarm.message} isCritical={alarm.isCritical} />
-                ))}
-            </div>
-            <div className="kpi-section">
-                <KpiCard title="Total Revenue" value={` ${totalRevenue.toFixed(2)},-`} />
-                <KpiCard title="ARPU " description={"(average revenue per unit)"} value={` ${arpu.toFixed(2)},-`} />
-                <KpiCard title="Average Subscription Length" value={`${averageSubscriptionLength.toFixed(2)} months`} />
-                <KpiCard title="Total Damage Costs" value={`${totalDamageCost.toFixed(2)},-`} />
-                <KpiCard title="Total Car Value" value={` ${totalCarValue.toFixed(2)},-`} />
-                <KpiCard title="Total Available Cars" value={` ${totalAvailableCars}`} />
-                {/* Add more KpiCard components as needed */}
-            </div>
-            <div className="charts-container">
-                <div className="chart-container">
-                    <Bar data={barChartData} options={{ maintainAspectRatio: false }} />
+            <div className="landingPageContainer">
+                <div className="dashboard">
+                    <div className="alarms-sidebar">
+                        {alarms.map((alarm, index) => (
+                            <Alarm key={index} title={alarm.title} message={alarm.message} isCritical={alarm.isCritical} />
+                        ))}
+                        </div>
+                            <div className="kpi-section">
+                                <KpiCard title="Totalindtægt" value={` ${totalRevenue.toFixed(0)},-`} />
+                                <KpiCard title="ARPU " description={"(gennemsnitligt indtægt per enhed)"} value={` ${arpu.toFixed(2)},-`} />
+                                <KpiCard title="Gennemsnitlig Abonnementslængde" value={`${averageSubscriptionLength.toFixed(2)} måneder`} />
+                                <KpiCard title="Samlede Skadeomkostninger" value={`${totalDamageCost.toFixed(0)},-`} />
+                                <KpiCard title="Samlet Bilværdi" value={` ${totalCarValue.toFixed(0)},-`} />
+                                <KpiCard title="Samlede Tilgængelige Biler" value={` ${totalAvailableCars}`} />
+                            </div>
+                        <div className="charts-container">
+                            <div className="chart-container">
+                                    <Bar data={barChartData} options={{ maintainAspectRatio: false }} />
+                            </div>
+                            <div className="chart-container">
+                                    <Bar data={barChartConfig} options={{ maintainAspectRatio: false }} />
+                            </div>
+                        </div>
                 </div>
-                <div className="chart-container">
-                    <Bar data={barChartConfig} options={{ maintainAspectRatio: false }} />
-                </div>
-                {/* Add more chart containers as needed */}
             </div>
         </div>
-</div>
-        </div>
-
     );
 }
 

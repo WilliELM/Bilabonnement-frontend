@@ -1,21 +1,15 @@
 .kpi-card {
-    background-color: #ffffff; /* You can adjust the color or add a gradient */
+    background-color: #ffffff;
     border-radius: 10px;
     border-color: #1992c3;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 10px;
     display: inline-block;
-    width: 250px; /* Adjust the width as needed */
+    width: 220px;
     text-align: center;
 }
-.alarms{
-    width: 30%;
-}
 
-.kpi-section{
-    width: 40%;
-}
 .kpi-title {
     font-size: 0.9em;
     font-weight: bold;
@@ -26,7 +20,7 @@
 .kpi-value {
     font-size: 20px;
     font-weight: bold;
-    color: #3498db; /* Primary color */
+    color: #3498db;
 }
 
 .kpi-description {
@@ -44,20 +38,14 @@
 .kpi-icon {
     display: block;
     margin: 0 auto 10px;
-    height: 40px; /* Adjust based on your icon size */
-    width: 40px; /* Adjust based on your icon size */
+    height: 40px;
+    width: 40px;
 }
 
-/* Optional: Style for the increase/decrease percentage */
 .kpi-increase {
-    color: #4caf50; /* Green for increase */
+    color: #4caf50;
 }
 
 .kpi-decrease {
-    color: #f44336; /* Red for decrease */
-}
-
-/* Make sure to wrap your KPI cards in a container that centers them */
-.kpi-container {
-    text-align: center;
+    color: #f44336;
 }

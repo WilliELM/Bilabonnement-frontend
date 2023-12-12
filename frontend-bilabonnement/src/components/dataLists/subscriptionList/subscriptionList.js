@@ -1,10 +1,8 @@
-// SubscriptionList.js
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./subscriptionList.css";
 import EditSubscriptionModal from "./editSubscriptionList";
-import Navbar from "../../websiteComponents/navBar/navbar"; // Ensure this path is correct
+import Navbar from "../../websiteComponents/navBar/navbar";
 
 const SubscriptionList = () => {
     const [subscriptions, setSubscriptions] = useState([]);
@@ -76,49 +74,53 @@ const SubscriptionList = () => {
             <header className="Dashboard">
                 <Navbar />
             </header>
-        <div className="page-container">
-            {editingSubscription && (
-                <EditSubscriptionModal
-                    subscription={editingSubscription}
-                    onClose={() => setEditingSubscription(null)}
-                    onSave={handleUpdate}
-                />
-            )}
-            <table>
-                <thead>
-                <tr>
-                    <th onClick={() => handleSort('buydate')}>Buy Date</th>
-                    <th onClick={() => handleSort('substart')}>Subscription Start</th>
-                    <th onClick={() => handleSort('subend')}>Subscription End</th>
-                    <th onClick={() => handleSort('kmstart')}>Kilometers Start</th>
-                    <th onClick={() => handleSort('kmdone')}>Kilometers Done</th>
-                    <th onClick={() => handleSort('kmplanned')}>Kilometers Planned</th>
-                    <th onClick={() => handleSort('subtime')}>Subscription Time</th>
-                    <th onClick={() => handleSort('customer.id')}>Customer ID</th>
-                    <th onClick={() => handleSort('car.id')}>Car ID</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {sortedSubscriptions.map(subscription => (
-                    <tr key={subscription.id}>
-                        <td>{subscription.buydate}</td>
-                        <td>{subscription.substart}</td>
-                        <td>{subscription.subend}</td>
-                        <td>{subscription.kmstart}</td>
-                        <td>{subscription.kmdone}</td>
-                        <td>{subscription.kmplanned}</td>
-                        <td>{subscription.subtime} months</td>
-                        <td>{subscription.customer ? subscription.customer.id : 'N/A'}</td>
-                        <td>{subscription.car ? subscription.car.id : 'N/A'}</td>
-                        <td>
-                            <button className="edit-btn" onClick={() => handleEditClick(subscription)}>Edit</button>
-                            <button className="delete-btn" onClick={() => handleDelete(subscription.id)}>Delete</button>
-                        </td>
-                    </tr>
-                ))}
-                </tbody>            </table>
-        </div>
+                <div className="page-container">
+                    {editingSubscription && (
+                        <EditSubscriptionModal
+                            subscription={editingSubscription}
+                            onClose={() => setEditingSubscription(null)}
+                            onSave={handleUpdate}
+                        />
+                    )}
+                <div className="table-air">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th onClick={() => handleSort('id')}>Id</th>
+                                <th onClick={() => handleSort('buydate')}>Købsdato</th>
+                                <th onClick={() => handleSort('substart')}>Abonnementsstart</th>
+                                <th onClick={() => handleSort('subend')}>Abonnementsafslutning</th>
+                                <th onClick={() => handleSort('kmstart')}>Start kilometer</th>
+                                <th onClick={() => handleSort('kmdone')}>Kørte kilometer</th>
+                                <th onClick={() => handleSort('kmplanned')}>Planlagte kilometer</th>
+                                <th onClick={() => handleSort('subtime')}>Abonnementstid</th>
+                                <th onClick={() => handleSort('customer.id')}>Kunde-ID</th>
+                                <th onClick={() => handleSort('car.id')}>Bil-ID</th>
+                                <th>Handlinger</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {sortedSubscriptions.map(subscription => (
+                            <tr key={subscription.id}>
+                                <td> {subscription.id}</td>
+                                <td>{subscription.buydate}</td>
+                                <td>{subscription.substart}</td>
+                                <td>{subscription.subend}</td>
+                                <td>{subscription.kmstart}</td>
+                                <td>{subscription.kmdone}</td>
+                                <td>{subscription.kmplanned}</td>
+                                <td>{subscription.subtime} months</td>
+                                <td>{subscription.customer ? subscription.customer.id : 'N/A'}</td>
+                                <td>{subscription.car ? subscription.car.id : 'N/A'}</td>
+                                <td>
+                                    <button className="edit-btn" onClick={() => handleEditClick(subscription)}>Rediger</button>
+                                    <button className="delete-btn" onClick={() => handleDelete(subscription.id)}>Slet</button>
+                                </td>
+                            </tr>))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     );
 };

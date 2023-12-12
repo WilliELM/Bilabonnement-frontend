@@ -1,24 +1,24 @@
 .page-container {
     display: flex;
-    flex-direction: column; /* Stack filters and cards vertically */
+    flex-direction: column;
     width: 100%;
 }
 
 .filters-container {
-    display: flex; /* Align filter inputs horizontally */
-    justify-content: flex-start; /* Align to the start */
-    gap: 10px; /* Adds space between filter elements */
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
     padding: 20px;
-    border-bottom: 1px solid #ddd; /* Line below the filter section */
+    border-bottom: 1px solid #ddd;
 }
 
 .cars-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adaptive grid */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-gap: 20px;
     padding: 20px;
-    margin-top: 20px; /* Space below the filter section */
-    width: calc(100% - 40px); /* Account for padding */
+    margin-top: 20px;
+    width: calc(100% - 40px);
 }
 
 .car-card {
@@ -27,7 +27,7 @@
     border-radius: 10px;
     padding: 15px;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Optional shadow */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 .cogwheel-button {
     position: absolute;
@@ -39,24 +39,10 @@
 }
 
 .cogwheel-icon {
-    height: 24px; /* Adjust size as needed */
-    width: 24px; /* Ensure the icon keeps its aspect ratio */
+    height: 24px;
+    width: 24px;
 }
 
-.dropdown-menu {
-    position: absolute;
-    right: 0;
-    top: 40px; /* Position below the cogwheel */
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    padding: 10px;
-    z-index: 100; /* Make sure it's above other content */
-    display: none; /* Hide by default */
-}
-
-/* Display dropdown when cogwheel is clicked */
 .car-card:hover .dropdown-menu {
     display: block;
 }
@@ -67,9 +53,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(169, 169, 169, 0.1); /* Light grey with transparency */
-    z-index: 998; /* Below the popup but above other content */
-    display: none; /* Initially hidden */
+    background: rgba(169, 169, 169, 0.1);
+    z-index: 998;
+    display: none;
   }
 
 
@@ -86,7 +72,7 @@
     margin: auto;
     z-index: 999;
     display: none;
-    text-align: left; /* Align text to the left */
+    text-align: left;
   }
 
   .popup label {
@@ -111,7 +97,6 @@
     justify-content: center;
   }
 
-
   .close-icon {
     position: absolute;
     top: 10px;
@@ -123,11 +108,10 @@
     padding: 0;
   }
 
-
   .button-container {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px; /* Adjust margin as needed */
+    margin-top: 20px;
   }
 
   .update-button {
@@ -146,7 +130,7 @@
     border-color:#1992c3;
   }
   .delete-button {
-    background-color: #f44336; /* Red color for delete button */
+    background-color: #f44336;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -169,5 +153,5 @@
 
 .popup.active,
   .overlay.active {
-    display: block; /* Show when active */
+    display: block;
   }

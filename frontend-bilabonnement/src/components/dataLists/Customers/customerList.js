@@ -48,50 +48,52 @@ function CustomerTable() {
             <header className="Dashboard">
                 <Navbar />
             </header>
-        <div className="page-container">
-            {editingCustomer && (
-                <EditCustomerModal
-                    customer={editingCustomer}
-                    onClose={() => setEditingCustomer(null)}
-                    onSave={handleUpdate}
-                />
-            )}
-            <table>
-                <thead>
-                    <tr>
-                        <th>Customer ID</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Address</th>
-                        <th>Zip Code</th>
-                        <th>City</th>
-                        <th>Phone</th>
-                        <th>Email</th>
-                        <th>CPR</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {customers.map(customer => (
-                        <tr key={customer.id}>
-                            <td>{customer.id}</td>
-                            <td>{customer.firstName}</td>
-                            <td>{customer.lastName}</td>
-                            <td>{customer.address}</td>
-                            <td>{customer.zipcode}</td>
-                            <td>{customer.city}</td>
-                            <td>{customer.phone}</td>
-                            <td>{customer.email}</td>
-                            <td>{customer.cpr}</td>
-                            <td>
-                                <button className="edit-btn" onClick={() => handleEditClick(customer)}>Edit</button>
-                                <button className="delete-btn" onClick={() => handleDelete(customer.id)}>Delete</button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
+            <div className="page-container">
+                {editingCustomer && (
+                    <EditCustomerModal
+                        customer={editingCustomer}
+                        onClose={() => setEditingCustomer(null)}
+                        onSave={handleUpdate}
+                    />
+                )}
+                <div className="table-air">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Kunde id</th>
+                                <th>Fornavn</th>
+                                <th>Efternavn</th>
+                                <th>Adresse</th>
+                                <th>Post nummer</th>
+                                <th>By</th>
+                                <th>Telefon nummer</th>
+                                <th>E-mail</th>
+                                <th>CPR</th>
+                                <th>Handlinger</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {customers.map(customer => (
+                                <tr key={customer.id}>
+                                    <td>{customer.id}</td>
+                                    <td>{customer.firstName}</td>
+                                    <td>{customer.lastName}</td>
+                                    <td>{customer.address}</td>
+                                    <td>{customer.zipcode}</td>
+                                    <td>{customer.city}</td>
+                                    <td>{customer.phone}</td>
+                                    <td>{customer.email}</td>
+                                    <td>{customer.cpr}</td>
+                                    <td>
+                                        <button className="edit-btn" onClick={() => handleEditClick(customer)}>Rediger</button>
+                                        <button className="delete-btn" onClick={() => handleDelete(customer.id)}>Slet</button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     );
 }

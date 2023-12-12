@@ -1,5 +1,3 @@
-// DamageReportList.js
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./damageList.css";
@@ -49,42 +47,44 @@ const DamageReportList = () => {
             <header className="Dashboard">
                 <Navbar />
             </header>
-        <div className="page-container">
-            {editingDamageReport && (
-                <EditDamageReportModal
-                    report={editingDamageReport}
-                    onClose={() => setEditingDamageReport(null)}
-                    onSave={handleUpdate}
-                />
-            )}
-            <table>
-                <thead>
-                <tr>
-                    <th>Cleaning Cost</th>
-                    <th>Repair Cost</th>
-                    <th>ID</th>
-                    <th>Subscription ID</th>
-                    <th>Damage Description</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {damageReports.map(report => (
-                    <tr key={report.id}>
-                        <td>{report.cleaningCost}</td>
-                        <td>{report.repairCost}</td>
-                        <td>{report.id}</td>
-                        <td>{report.subscription.id}</td>
-                        <td>{report.damageDescription}</td>
-                        <td>
-                            <button className="edit-btn" onClick={() => handleEditClick(report)}>Edit</button>
-                            <button className="delete-btn" onClick={() => handleDelete(report.id)}>Delete</button>
-                        </td>
-                    </tr>
-                ))}
-                </tbody>
-            </table>
-        </div>
+            <div className="page-container">
+                {editingDamageReport && (
+                    <EditDamageReportModal
+                        report={editingDamageReport}
+                        onClose={() => setEditingDamageReport(null)}
+                        onSave={handleUpdate}
+                    />
+                )}
+                <div className="table-air">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Rengøringsomkostninger</th>
+                            <th>Reparationsomkostninger</th>
+                            <th>Abonnement-ID</th>
+                            <th>Beskrivelse af skade</th>
+                            <th>Handlinger</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {damageReports.map(report => (
+                            <tr key={report.id}>
+                                <td>{report.id}</td>
+                                <td>{report.cleaningCost}</td>
+                                <td>{report.repairCost}</td>
+                                <td>{report.subscription.id}</td>
+                                <td>{report.damageDescription}</td>
+                                <td>
+                                    <button className="edit-btn" onClick={() => handleEditClick(report)}>Rediger</button>
+                                    <button className="delete-btn" onClick={() => handleDelete(report.id)}>Slet</button>
+                                </td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     );
 };
