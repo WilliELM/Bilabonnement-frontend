@@ -131,7 +131,7 @@ function ManageSubscriptions() {
                     }}
                     value={selectedCar ? String(selectedCar.id) : ''}
                 >
-                    <option value="" disabled>Select Car</option>
+                    <option value="" disabled>Vælg Bil</option>
                     {cars.filter(car => car.carFree).map(car => (
 
                         <option key={car.id} value={String(car.id)}>
