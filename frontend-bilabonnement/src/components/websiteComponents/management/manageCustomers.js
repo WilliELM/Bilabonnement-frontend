@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function ManageCustomers() {
-    const [customers, setCustomers] = useState([]); // State to store existing customers
+    const [customers, setCustomers] = useState([]);
     const [newCustomer, setNewCustomer] = useState({
         firstName: '',
         lastName: '',
@@ -15,7 +15,6 @@ function ManageCustomers() {
         cpr: '',
     });
 
-    // Fetch existing customers on component mount
     useEffect(() => {
         fetchCustomers();
     }, []);
@@ -42,6 +41,7 @@ function ManageCustomers() {
         e.preventDefault();
         axios.post('https://bilabonnementapi.azurewebsites.net/customers', newCustomer)
             .then(response => {
+                alert('Kunde oprettet succesfuldt!');
                 setNewCustomer({
                     firstName: '',
                     lastName: '',
@@ -52,39 +52,30 @@ function ManageCustomers() {
                     email: '',
                     cpr: '',
                 });
-                fetchCustomers(); // Refresh the list after adding
+                fetchCustomers();
             })
             .catch(error => {
                 console.error('Error adding new customer', error);
+                alert('Fejl i oprettelse af kunde');
             });
     };
 
-    const handleDelete = (customerId) => {
-        axios.delete(`https://bilabonnementapi.azurewebsites.net/customers/${customerId}`)
-            .then(response => {
-                fetchCustomers(); // Refresh the list after deletion
-            })
-            .catch(error => {
-                console.error('Error deleting customer', error);
-            });
-    };
 
     return (
         <div>
 
             <form onSubmit={handleSubmit}>
-                <h2> Create new Customer </h2>
-                <input type="text" name="firstName" value={newCustomer.firstName} onChange={handleChange} placeholder="First Name" />
-                <input type="text" name="lastName" value={newCustomer.lastName} onChange={handleChange} placeholder="Last Name" />
-                <input type="text" name="address" value={newCustomer.address} onChange={handleChange} placeholder="Address" />
-                <input type="text" name="zipcode" value={newCustomer.zipcode} onChange={handleChange} placeholder="Zip code" />
-                <input type="text" name="city" value={newCustomer.city} onChange={handleChange} placeholder="City" />
-                <input type="text" name="phone" value={newCustomer.phone} onChange={handleChange} placeholder="Phone number" />
-                <input type="text" name="email" value={newCustomer.email} onChange={handleChange} placeholder="Email" />
-                <input type="text" name="cpr" value={newCustomer.cpr} onChange={handleChange} placeholder="Cpr-number" />
+                <h2> Opret ny kunde </h2>
+                <input type="text" name="firstName" value={newCustomer.firstName} onChange={handleChange} placeholder="Fornavn" />
+                <input type="text" name="lastName" value={newCustomer.lastName} onChange={handleChange} placeholder="Efternavn" />
+                <input type="text" name="address" value={newCustomer.address} onChange={handleChange} placeholder="Adresse" />
+                <input type="text" name="zipcode" value={newCustomer.zipcode} onChange={handleChange} placeholder="Post nummer" />
+                <input type="text" name="city" value={newCustomer.city} onChange={handleChange} placeholder="By" />
+                <input type="text" name="phone" value={newCustomer.phone} onChange={handleChange} placeholder="Tlf. nummer" />
+                <input type="text" name="email" value={newCustomer.email} onChange={handleChange} placeholder="E-mail" />
+                <input type="text" name="cpr" value={newCustomer.cpr} onChange={handleChange} placeholder="Cpr-nummer" />
 
-                {/* Add input/select for subscriptions if needed */}
-                <button className="Button-update" type="submit">Create Customer</button>
+                <button className="Button-update" type="submit">Opret kunde</button>
             </form>
 
         </div>

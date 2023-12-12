@@ -1,54 +1,41 @@
-/* Root styles */
+
 :root {
-    --navbar-height: 100px; /* Adjust as per your navbar's height */
+    --navbar-height: 85px;
 
 }
 .landingPageContainer{
     margin-top: 20px;
 }
 
-body, html {
-
-    height: 100%;
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-}
-
-/* Main layout */
 .dashboard {
     display: flex;
     flex-direction: row;
     overflow: hidden; /* Prevents scrolling */
 }
 
-/* Navbar styles */
+
 .navbar {
     height: var(--navbar-height);
-    /* Other navbar styles remain the same */
 }
 
-/* Alarms sidebar styles */
 .alarms-sidebar {
     padding-top: 10px;
     width: 20%;
     height: 100%;
-    overflow-y: auto; /* Allows scrolling within the sidebar */
-    /* Other styles remain the same */
+    overflow-y: auto;
 }
 
-/* KPI and charts section */
 .kpi-section {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Three KPI cards per row */
+    grid-template-columns: repeat(2, 1fr);
     gap: 1px;
-    width: 70%;
     height: 100%;
-    overflow-y: auto; /* Allows scrolling within the kpi-section */
+    overflow-y: auto;
     padding-left: 20px;
     padding-right: 20px;
     flex-wrap: wrap;
     align-content: flex-start;
-    /* Remove any other styles that conflict with these */
+
 }
 
 

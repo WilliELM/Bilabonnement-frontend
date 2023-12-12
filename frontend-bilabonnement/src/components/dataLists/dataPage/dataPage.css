@@ -1,5 +1,3 @@
-/* DataPage.css */
-
 .data-page-container {
     display: grid;
     grid-template-columns: repeat(4, minmax(300px, 4fr));

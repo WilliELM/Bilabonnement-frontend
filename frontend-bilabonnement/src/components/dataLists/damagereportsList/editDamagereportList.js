@@ -1,5 +1,3 @@
-// EditDamageReportModal.js
-
 import React, { useEffect, useState } from 'react';
 
 const EditDamageReportModal = ({ report, onClose, onSave }) => {

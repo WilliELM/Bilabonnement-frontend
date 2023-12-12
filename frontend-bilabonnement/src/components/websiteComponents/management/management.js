@@ -34,30 +34,30 @@ function Management() {
             <div className="management">
                 <nav className="management-nav">
                     <NavLink to="cars" onClick={handleNavLinkClick} className={({ isActive }) => isActive ? 'active-link' : ''}>
-                        <FaCar /> Create Cars
+                        <FaCar /> Opret biler
                     </NavLink>
                     <NavLink to="customers" onClick={handleNavLinkClick} className={({ isActive }) => isActive ? 'active-link' : ''}>
-                        <FaUser /> Create Customers
+                        <FaUser /> Opret kunder
                     </NavLink>
                     <NavLink to="subscriptions" onClick={handleNavLinkClick} className={({ isActive }) => isActive ? 'active-link' : ''}>
-                        <FaClipboardList /> Create Subscriptions
+                        <FaClipboardList /> Opret abonnementer
                     </NavLink>
                     <NavLink to="dmgreports" onClick={handleNavLinkClick} className={({ isActive }) => isActive ? 'active-link' : ''}>
-                        <FaExclamationTriangle /> Create Damage Reports
+                        <FaExclamationTriangle /> Opret skades rapporter
                     </NavLink>
                 </nav>
-                {showDescription && (
-                    <div>
-                <h2>Management</h2>
-                    <div className="management-description">Press one of the above buttons to create new cars, customers, subscriptions, or damage reports</div>
-                    </div>
-                )}
-                <Routes>
-                    <Route path="cars" element={<ManageCars />} />
-                    <Route path="customers" element={<ManageCustomers />} />
-                    <Route path="subscriptions" element={<ManageSubscriptions />} />
-                    <Route path="dmgreports" element={<ManageDmgReports />} />
-                </Routes>
+                    {showDescription && (
+                        <div>
+                    <h2>Administration</h2>
+                        <div className="management-description">Tryk på en af ovenstående knapper for at oprette nye biler, kunder, abonnementer eller skaderapporter.</div>
+                        </div>
+                    )}
+                    <Routes>
+                        <Route path="cars" element={<ManageCars />} />
+                        <Route path="customers" element={<ManageCustomers />} />
+                        <Route path="subscriptions" element={<ManageSubscriptions />} />
+                        <Route path="dmgreports" element={<ManageDmgReports />} />
+                    </Routes>
             </div>
         </div>
     );

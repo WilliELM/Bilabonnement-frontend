@@ -6,11 +6,11 @@ function ManageDmgReports() {
     const [newDamageReport, setNewDamageReport] = useState({
         cleaningCost: '',
         repairCost: '',
-        subscription: null, // Change to an object
+        subscription: null,
         damageDescription: '',
     });
     const [subscriptions, setSubscriptions] = useState([]);
-    const [selectedSubscription, setSelectedSubscription] = useState(null); // Change to an object
+    const [selectedSubscription, setSelectedSubscription] = useState(null);
 
     useEffect(() => {
         fetchDamageReports();
@@ -58,6 +58,7 @@ function ManageDmgReports() {
 
             axios.post('https://bilabonnementapi.azurewebsites.net/damagereports', updatedDamageReport)
                 .then(response => {
+                    alert('Skades rapport oprettet succesfuldt!');
                     setNewDamageReport({
                         cleaningCost: '',
                         repairCost: '',
@@ -69,6 +70,7 @@ function ManageDmgReports() {
                 })
                 .catch(error => {
                     console.error('Error adding new damage report', error);
+                    alert('Fejl i oprettelse af skades rapport');
                 });
         } else {
             console.error('No subscription selected');
@@ -78,30 +80,27 @@ function ManageDmgReports() {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <h2> Create new damage report </h2>
-                <input type="number" name="cleaningCost" value={newDamageReport.cleaningCost} onChange={handleChange} placeholder="Cleaning Cost" />
-                <input type="number" name="repairCost" value={newDamageReport.repairCost} onChange={handleChange} placeholder="Repair Cost" />
+                <h2> Opret ny skades rapport </h2>
+                <input type="number" name="cleaningCost" value={newDamageReport.cleaningCost} onChange={handleChange} placeholder="Rengøringsomkostninger" />
+                <input type="number" name="repairCost" value={newDamageReport.repairCost} onChange={handleChange} placeholder="	Reparationsomkostninger" />
 
-                {/* Add the dropdown for selecting subscription */}
                 <select
                     name="subscription"
                     value={selectedSubscription ? String(selectedSubscription.id) : ''}
                     onChange={(e) => {
                         const selectedSub = subscriptions.find(sub => sub.id === parseInt(e.target.value, 10));
                             setSelectedSubscription(selectedSub);
-                     }}
-                >
-                     <option value="">Select Subscription</option>
+                     }}>
+
+                     <option value="">Vælg kunde </option>
                     {subscriptions.map(subscription => (
                          <option key={subscription.id} value={String(subscription.id)}>
                         {`${subscription.customer.firstName} ${subscription.customer.lastName} - ${subscription.id}`}
                      </option>
                       ))}
                 </select>
-
-
-                <input type="text" name="damageDescription" value={newDamageReport.damageDescription} onChange={handleChange} placeholder="Damage Description" />
-                <button className="Button-update" type="submit">Create Damage Report</button>
+                <input type="text" name="damageDescription" value={newDamageReport.damageDescription} onChange={handleChange} placeholder="Skade beskrivelse" />
+                <button className="Button-update" type="submit">Opret ny skades rapport</button>
             </form>
         </div>
     );

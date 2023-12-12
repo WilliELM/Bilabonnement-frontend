@@ -77,6 +77,7 @@ function ManageSubscriptions() {
 
             axios.post('https://bilabonnementapi.azurewebsites.net/subscriptions', updatedSubscription)
                 .then(response => {
+                    alert('Abonnement oprettet succesfuldt!');
                     setNewSubscription({
                         buydate: '',
                         substart: '',
@@ -94,6 +95,7 @@ function ManageSubscriptions() {
                 })
                 .catch(error => {
                     console.error('Error adding new subscription', error);
+                    alert('Fejl i oprettelse af abonnement');
                 });
         } else {
             console.error('Car or Customer not selected');
@@ -103,26 +105,25 @@ function ManageSubscriptions() {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <h2> Create new Subscription </h2>
-                <div className="description">Enter buy date</div>
-                <input type="date" name="buydate" value={newSubscription.buydate} onChange={handleChange} placeholder="Buy Date" />
-                <div className="description">Enter subscription start</div>
-                <input type="date" name="substart" value={newSubscription.substart} onChange={handleChange} placeholder="Subscription Start" />
-                <div className="description">Enter subscription end</div>
-                <input type="date" name="subend" value={newSubscription.subend} onChange={handleChange} placeholder="Subscription End" />
-                <div className="description">Enter Km start</div>
-                <input type="number" name="kmstart" value={newSubscription.kmstart} onChange={handleChange} placeholder="KM Start" />
-                <div className="description">Enter Km done</div>
-                <input type="number" name="kmdone" value={newSubscription.kmdone} onChange={handleChange} placeholder="KM Done" />
-                <div className="description">Enter Km planned</div>
-                <input type="number" name="kmplanned" value={newSubscription.kmplanned} onChange={handleChange} placeholder="KM Planned" />
-                <div className="description">Enter Subscription time (months)</div>
-                <input type="number" name="subtime" value={newSubscription.subtime} onChange={handleChange} placeholder="Subscription Time" />
+                <h2> Opret nyt abonnement </h2>
+                <div className="description">Indtast Købsdato</div>
+                <input type="date" name="buydate" value={newSubscription.buydate} onChange={handleChange} placeholder="Købsdato" />
+                <div className="description">Indtast abonnements start</div>
+                <input type="date" name="substart" value={newSubscription.substart} onChange={handleChange} placeholder="Abonnementsstart" />
+                <div className="description">Indtast abonnementsafslutning</div>
+                <input type="date" name="subend" value={newSubscription.subend} onChange={handleChange} placeholder="Abonnementsafslutning" />
+                <div className="description">Indtast start kilometer</div>
+                <input type="number" name="kmstart" value={newSubscription.kmstart} onChange={handleChange} placeholder="Start kilometer" />
+                <div className="description">Indtast kørte kilometer</div>
+                <input type="number" name="kmdone" value={newSubscription.kmdone} onChange={handleChange} placeholder="Kørte kilometer" />
+                <div className="description">Indtast planlagte kilometer</div>
+                <input type="number" name="kmplanned" value={newSubscription.kmplanned} onChange={handleChange} placeholder="Planlagte kilometer" />
+                <div className="description">Indtast abonnementstid (måneder)</div>
+                <input type="number" name="subtime" value={newSubscription.subtime} onChange={handleChange} placeholder="Abonnementstid" />
 
-                {/* Car and Customer dropdown selection */}
-                <div className="description">Select Car</div>
+                <div className="description">Vælg bil</div>
                 <select name="car" onChange={(e) => setSelectedCar(cars.find(car => car.id === parseInt(e.target.value, 10)))} value={selectedCar ? String(selectedCar.id) : ''}>
-                    <option value="" disabled>Select Car</option>
+                    <option value="" disabled>Vælg bil</option>
                     {cars.map(car => (
                         <option key={car.id} value={String(car.id)}>
                             {`${car.brand} ${car.model} - ${car.id}`}
@@ -130,9 +131,9 @@ function ManageSubscriptions() {
                     ))}
                 </select>
 
-                <div className="description">Select Customer</div>
+                <div className="description">Vælg kunde</div>
                 <select name="customer" onChange={(e) => setSelectedCustomer(customers.find(customer => customer.id === parseInt(e.target.value, 10)))} value={selectedCustomer ? String(selectedCustomer.id) : ''}>
-                    <option value="" disabled>Select Customer</option>
+                    <option value="" disabled>Vælg kunde</option>
                     {customers.map(customer => (
                         <option key={customer.id} value={String(customer.id)}>
                             {`${customer.firstName} ${customer.lastName} - ${customer.id}`}
@@ -140,9 +141,8 @@ function ManageSubscriptions() {
                     ))}
                 </select>
 
-                <button className="Button-update" type="submit">
-                    Create Subscription
-                </button>
+                <button className="Button-update" type="submit"> Opret abonnement </button>
+
             </form>
         </div>
     );

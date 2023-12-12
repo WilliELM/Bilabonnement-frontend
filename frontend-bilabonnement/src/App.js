@@ -6,7 +6,7 @@ import DamageList from "./components/dataLists/damagereportsList/damageList";
 import DataPage from "./components/dataLists/dataPage/dataPage";
 import LandingPage from "./components/websiteComponents/landingPage/landingPage";
 
-import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
     return (
