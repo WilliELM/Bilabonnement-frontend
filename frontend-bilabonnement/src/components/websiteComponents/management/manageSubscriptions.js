@@ -11,13 +11,13 @@ function ManageSubscriptions() {
         kmdone: 0,
         kmplanned: 0,
         subtime: 0,
-        car: null, // Change to an object
-        customer: null, // Change to an object
+        car: null, 
+        customer: null,
     });
     const [cars, setCars] = useState([]);
     const [customers, setCustomers] = useState([]);
-    const [selectedCar, setSelectedCar] = useState(null); // Change to an object
-    const [selectedCustomer, setSelectedCustomer] = useState(null); // Change to an object
+    const [selectedCar, setSelectedCar] = useState(null); 
+    const [selectedCustomer, setSelectedCustomer] = useState(null); 
 
     useEffect(() => {
         fetchSubscriptions();
@@ -89,8 +89,8 @@ function ManageSubscriptions() {
                         car: null,
                         customer: null,
                     });
-                    setSelectedCar(null); // Reset selectedCar
-                    setSelectedCustomer(null); // Reset selectedCustomer
+                    setSelectedCar(null); 
+                    setSelectedCustomer(null); 
                     fetchSubscriptions();
                 })
                 .catch(error => {
@@ -101,10 +101,11 @@ function ManageSubscriptions() {
             console.error('Car or Customer not selected');
         }
     };
-
+  
     return (
         <div>
             <form onSubmit={handleSubmit}>
+      
                 <h2> Opret nyt abonnement </h2>
                 <div className="description">Indtast Købsdato</div>
                 <input type="date" name="buydate" value={newSubscription.buydate} onChange={handleChange} placeholder="Købsdato" />
@@ -121,22 +122,32 @@ function ManageSubscriptions() {
                 <div className="description">Indtast abonnementstid (måneder)</div>
                 <input type="number" name="subtime" value={newSubscription.subtime} onChange={handleChange} placeholder="Abonnementstid" />
 
-                <div className="description">Vælg bil</div>
-                <select name="car" onChange={(e) => setSelectedCar(cars.find(car => car.id === parseInt(e.target.value, 10)))} value={selectedCar ? String(selectedCar.id) : ''}>
-                    <option value="" disabled>Vælg bil</option>
-                    {cars.map(car => (
+                <div className="description">Vælg Bil</div>
+                <select
+                    name="car"
+                    onChange={(e) => {
+                        const selectedCar = cars.find(car => car.id === parseInt(e.target.value, 10));
+                        setSelectedCar(selectedCar);
+                    }}
+                    value={selectedCar ? String(selectedCar.id) : ''}
+                >
+                    <option value="" disabled>Select Car</option>
+                    {cars.filter(car => car.carFree).map(car => (
+
                         <option key={car.id} value={String(car.id)}>
-                            {`${car.brand} ${car.model} - ${car.id}`}
+                            {`${car.brand} ${car.model} - ID: ${car.id}`}
                         </option>
                     ))}
+                    
                 </select>
 
                 <div className="description">Vælg kunde</div>
+
                 <select name="customer" onChange={(e) => setSelectedCustomer(customers.find(customer => customer.id === parseInt(e.target.value, 10)))} value={selectedCustomer ? String(selectedCustomer.id) : ''}>
                     <option value="" disabled>Vælg kunde</option>
                     {customers.map(customer => (
                         <option key={customer.id} value={String(customer.id)}>
-                            {`${customer.firstName} ${customer.lastName} - ${customer.id}`}
+                            {`${customer.firstName} ${customer.lastName} - ID: ${customer.id}`}
                         </option>
                     ))}
                 </select>
