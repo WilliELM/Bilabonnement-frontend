@@ -46,7 +46,7 @@ function LandingPage() {
 
     const alarms = [
         { title: 'Indtægtsadvarsel', message: 'Indtægter er under den fastsatte grænse', isCritical: true },
-        { title: 'ARPU-advarsel (Gennemsnitlig Indtægt Pr. Bruger)', message: ' ARPU er lavere end sidste måned', isCritical: false },
+        { title: 'ARPU-advarsel (Gennemsnitlig indtægt Pr. enhed)', message: ' ARPU er lavere end sidste måned', isCritical: false },
         { title: 'Skadeomkostningsadvarsel ', message: 'Skadeomkostninger er højere end forventet', isCritical: true },
         { title: 'Bilværdiadvarsel ', message: 'Samlet bilværdi er lavere end forventet', isCritical: true },
         { title: 'Bilbeholdningsadvarsel ', message: 'Få biler på lager', isCritical: true }
