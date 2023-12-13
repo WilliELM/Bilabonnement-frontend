@@ -8,6 +8,7 @@ import LandingPage from "./components/websiteComponents/landingPage/landingPage"
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+const REACT_APP_API_URL = "https://bilabonnementapi.azurewebsites.net/"
 function App() {
     return (
         <Router>
