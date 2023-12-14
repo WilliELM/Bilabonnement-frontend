@@ -9,7 +9,7 @@ function ManageCars() {
         fueltype: '',
         regNr: '',
         nummerplade: '',
-        isCarFree: true
+        carFree: true
     });
     const [carId, setCarId] = useState('');
 
@@ -17,32 +17,32 @@ function ManageCars() {
         const { name, value } = e.target;
         setNewCar(prev => ({ ...prev, [name]: value }));
     };
+    const handleCheckboxChange = (e) => {
+        setNewCar(prev => ({ ...prev, isCarFree: e.target.checked }));
+    };
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (carId) {
-            axios.put(`https://bilabonnementapi.azurewebsites.net/cars/${carId}`, newCar)
-                .then(response => {
-                    alert('Bil opdateret succesfuldt!');
-                })
-                .catch(error => {
-                    console.error('Error updating car', error);
-                    alert('Fejl i opdatering af bil');
-                });
-        } else {
-            axios.post('https://bilabonnementapi.azurewebsites.net/cars', newCar)
-                .then(response => {
-                    alert('Bil oprettet succesfuldt!');
-                })
-                .catch(error => {
-                    console.error('Error creating car', error);
-                    alert('Fejl i oprettelse af bil');
-                });
-        }
-        setNewCar({ brand: '', model: '', price: '', fueltype: '', regNr: '', nummerplade:'', isCarFree: true });
+        console.log("Data being sent:", JSON.stringify(newCar));
+
+        axios.post('https://bilabonnementapi.azurewebsites.net/cars', JSON.stringify(newCar), {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                alert('Bil oprettet succesfuldt!');
+            })
+            .catch(error => {
+                console.error('Error creating car', error);
+                alert('Fejl i oprettelse af bil');
+            });
+
+        setNewCar({ brand: '', model: '', price: '', fueltype: '', regNr: '', nummerplade:'', carFree: true });
         setCarId('');
     };
+
 
     return (
         <div>
@@ -55,6 +55,12 @@ function ManageCars() {
                 <input type="text" name="fueltype" value={newCar.fueltype} onChange={handleChange} placeholder="Brændstof" />
                 <input type="text" name="regNr" value={newCar.regNr} onChange={handleChange} placeholder="Reg Nr" />
                 <input type="text" name="nummerplade" value={newCar.nummerplade} onChange={handleChange} placeholder="Nummerplade" />
+                <input
+                    type="checkbox"
+                    name="carFree"
+                    checked={newCar.carFree}
+                    onChange={handleCheckboxChange}
+                />
 
                 <button className="Button-update" type="submit">{carId ? 'Update Car' : 'Opret Car'}</button>
             </form>
