@@ -95,7 +95,7 @@ const SubscriptionList = () => {
                                 <th onClick={() => handleSort('kmdone')}>Kørte kilometer</th>
                                 <th onClick={() => handleSort('kmplanned')}>Planlagte kilometer</th>
                                 <th onClick={() => handleSort('subtime')}>Abonnementstid</th>
-                                <th onClick={() => handleSort('subcost')}>Abonnemtspris</th>
+                                <th onClick={() => handleSort('subcost')}>Abonnementspris</th>
                                 <th onClick={() => handleSort('customer.id')}>Kunde-ID</th>
                                 <th onClick={() => handleSort('car.id')}>Bil-ID</th>
                                 <th>Handlinger</th>
