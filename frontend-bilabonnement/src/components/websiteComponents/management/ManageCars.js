@@ -9,6 +9,7 @@ function ManageCars() {
         fueltype: '',
         regNr: '',
         nummerplade: '',
+        img:'',
         carFree: true
     });
     const [carId, setCarId] = useState('');
@@ -39,7 +40,7 @@ function ManageCars() {
                 alert('Fejl i oprettelse af bil');
             });
 
-        setNewCar({ brand: '', model: '', price: '', fueltype: '', regNr: '', nummerplade:'', carFree: true });
+        setNewCar({ brand: '', model: '', price: '', fueltype: '', regNr: '', nummerplade:'', img:'', carFree: true });
         setCarId('');
     };
 
@@ -55,6 +56,7 @@ function ManageCars() {
                 <input type="text" name="fueltype" value={newCar.fueltype} onChange={handleChange} placeholder="Brændstof" />
                 <input type="text" name="regNr" value={newCar.regNr} onChange={handleChange} placeholder="Reg Nr" />
                 <input type="text" name="nummerplade" value={newCar.nummerplade} onChange={handleChange} placeholder="Nummerplade" />
+                <input type="text" name="img" value={newCar.img} onChange={handleChange} placeholder="Billede-URL" />
                 <input
                     type="checkbox"
                     name="carFree"
