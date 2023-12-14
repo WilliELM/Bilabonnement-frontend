@@ -5,6 +5,7 @@ const EditSubscriptionModal = ({ subscription, onClose, onSave }) => {
         ...subscription,
         customerId: subscription.customer ? subscription.customer.id : '',
         carId: subscription.car ? subscription.car.id : '',
+        subcost: subscription.subcost || '',
     });
 
     useEffect(() => {
@@ -12,6 +13,7 @@ const EditSubscriptionModal = ({ subscription, onClose, onSave }) => {
             ...subscription,
             customerId: subscription.customer ? subscription.customer.id : '',
             carId: subscription.car ? subscription.car.id : '',
+            subcost: subscription.subcost || '',
         });
     }, [subscription]);
 
@@ -39,7 +41,7 @@ const EditSubscriptionModal = ({ subscription, onClose, onSave }) => {
                 <button className="close-button" onClick={onClose}>&times;</button>
                 <form onSubmit={handleSubmit}>
                     <div>
-                        <label>Buy Date:</label>
+                        <label>Køb Dato:</label>
                         <input
                             type="string"
                             name="buydate"
@@ -48,7 +50,7 @@ const EditSubscriptionModal = ({ subscription, onClose, onSave }) => {
                         />
                     </div>
                     <div>
-                        <label>Subscription Start:</label>
+                        <label>Abonnement Start:</label>
                         <input
                             type="string"
                             name="substart"
@@ -57,7 +59,7 @@ const EditSubscriptionModal = ({ subscription, onClose, onSave }) => {
                         />
                     </div>
                     <div>
-                        <label>Subscription End:</label>
+                        <label>Abonnement Slut:</label>
                         <input
                             type="string"
                             name="subend"
@@ -66,7 +68,7 @@ const EditSubscriptionModal = ({ subscription, onClose, onSave }) => {
                         />
                     </div>
                     <div>
-                        <label>Kilometers Start:</label>
+                        <label>Kilometer Start:</label>
                         <input
                             type="number"
                             name="kmstart"
@@ -75,7 +77,7 @@ const EditSubscriptionModal = ({ subscription, onClose, onSave }) => {
                         />
                     </div>
                     <div>
-                        <label>Kilometers Done:</label>
+                        <label>Kilometer Kørt:</label>
                         <input
                             type="number"
                             name="kmdone"
@@ -84,7 +86,7 @@ const EditSubscriptionModal = ({ subscription, onClose, onSave }) => {
                         />
                     </div>
                     <div>
-                        <label>Kilometers Planned:</label>
+                        <label>Kilometer Planlagt:</label>
                         <input
                             type="number"
                             name="kmplanned"
@@ -93,7 +95,7 @@ const EditSubscriptionModal = ({ subscription, onClose, onSave }) => {
                         />
                     </div>
                     <div>
-                        <label>Subscription Time (in months):</label>
+                        <label>Abonnement tid  (i måneder):</label>
                         <input
                             type="number"
                             name="subtime"
@@ -102,7 +104,7 @@ const EditSubscriptionModal = ({ subscription, onClose, onSave }) => {
                         />
                     </div>
                     <div>
-                        <label>Customer ID:</label>
+                        <label>Kunde ID:</label>
                         <input
                             type="text"
                             name="customerId"
@@ -111,11 +113,20 @@ const EditSubscriptionModal = ({ subscription, onClose, onSave }) => {
                         />
                     </div>
                     <div>
-                        <label>Car ID:</label>
+                        <label>Bil ID:</label>
                         <input
                             type="text"
                             name="carId"
                             value={formData.carId}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <label>Abonnements pris:</label>
+                        <input
+                            type="number"
+                            name="subcost"
+                            value={formData.subcost}
                             onChange={handleChange}
                         />
                     </div>
