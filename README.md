@@ -20,7 +20,8 @@ Du kan derefter klikke ind på vores frontend<BR>
 
 [Frontend](https://bilabonnement-jcu7.onrender.com/)
 
-Vores rapport kan downloades her [Bilabonnement PDF](https://github.com/WilliELM/Bilabonnement-frontend/files/13677360/Samlet-Rapport-Bilabonnement-m.-rettelser.docx-4.pdf)
+Vores rapport kan downloades her [Bilabonnement PDF](https://github.com/WilliELM/Bilabonnement-frontend/files/13677367/Rapport-Bilabonnement.docx.pdf)
+
 
 I rapporten kan du også finde forklaringer på vores kodeafsnit.
 
